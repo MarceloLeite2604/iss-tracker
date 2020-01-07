@@ -1,0 +1,14 @@
+version: "3.3"
+
+services:
+  iss-tracker-mysql:
+    container_name: iss-tracker-mysql
+    image: mysql:8.0.18
+    ports:
+      - 3306:3306
+      - 33060:33060
+    environment:
+      MYSQL_ROOT_PASSWORD: rocketman9206
+    volumes:
+      - ./mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
+      - ./mysql/conf.d:/etc/mysql/conf.d:ro

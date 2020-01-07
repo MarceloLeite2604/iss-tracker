@@ -1,0 +1,15 @@
+inquisitor:
+  # locale: pt-br
+  # zone-id: America/Sao_Paulo
+  api-base-url: http://api.open-notify.org
+  database:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/iss_tracker_db
+    username: inquisitor
+    password: K2yXylqF/zFWHDu3p8eYqg==
+    connections: 4
+  encryption:
+    cryptographic-algorythm: DESede
+    feedback-mode: CBC
+    padding-scheme: PKCS5Padding
+    key: 5n9rT9ZKqAF6tk8OJqRU+FRGjBrmiVd8
