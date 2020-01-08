@@ -1,16 +1,22 @@
-package com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss;
+package com.github.marceloleite2604.isstracker.inquisitor.model;
 
-public class Location {
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 
+@Embeddable
+public class Coordinates {
+
+	@Column(nullable = false)
 	private double latitude;
 
+	@Column(nullable = false)
 	private double longitude;
 
-	public Location() {
+	public Coordinates() {
 		super();
 	}
 
-	private Location(Builder builder) {
+	private Coordinates(Builder builder) {
 		this.latitude = builder.latitude;
 		this.longitude = builder.longitude;
 	}
@@ -25,7 +31,7 @@ public class Location {
 
 	@Override
 	public String toString() {
-		return "Location [latitude=" + latitude + ", longitude=" + longitude + "]";
+		return "Coordinates [latitude=" + latitude + ", longitude=" + longitude + "]";
 	}
 
 	public static Builder builder() {
@@ -49,8 +55,8 @@ public class Location {
 			return this;
 		}
 
-		public Location build() {
-			return new Location(this);
+		public Coordinates build() {
+			return new Coordinates(this);
 		}
 	}
 }

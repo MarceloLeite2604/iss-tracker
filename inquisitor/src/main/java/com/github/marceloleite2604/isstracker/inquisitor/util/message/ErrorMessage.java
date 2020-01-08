@@ -1,4 +1,4 @@
-package com.github.marceloleite2604.isstracker.inquisitor.model.message;
+package com.github.marceloleite2604.isstracker.inquisitor.util.message;
 
 import com.github.marceloleite2604.blimp.Message;
 import java.io.File;

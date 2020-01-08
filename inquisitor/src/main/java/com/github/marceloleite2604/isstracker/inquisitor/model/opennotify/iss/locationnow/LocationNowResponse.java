@@ -1,7 +1,7 @@
 package com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.locationnow;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.Location;
+import com.github.marceloleite2604.isstracker.inquisitor.model.Coordinates;
 
 public class LocationNowResponse {
 
@@ -10,7 +10,7 @@ public class LocationNowResponse {
 	private long timestamp;
 	
 	@JsonProperty("iss_position")
-	private Location issPosition;
+	private Coordinates issPosition;
 
 	public String getMessage() {
 		return message;
@@ -20,7 +20,7 @@ public class LocationNowResponse {
 		return timestamp;
 	}
 
-	public Location getIssPosition() {
+	public Coordinates getIssPosition() {
 		return issPosition;
 	}
 

@@ -1,7 +1,7 @@
 package com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.passtimes;
 
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
-import com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.Location;
+import com.github.marceloleite2604.isstracker.inquisitor.model.Coordinates;
 
 public class PassTimesRequest {
 
@@ -12,7 +12,7 @@ public class PassTimesRequest {
 	private int passes;
 
 	@JsonUnwrapped
-	private Location location;
+	private Coordinates location;
 
 	private PassTimesRequest(Builder builder) {
 		this.altitude = builder.altitude;
@@ -33,7 +33,7 @@ public class PassTimesRequest {
 		return passes;
 	}
 
-	public Location getLocation() {
+	public Coordinates getLocation() {
 		return location;
 	}
 
@@ -62,7 +62,7 @@ public class PassTimesRequest {
 		private int altitude;
 		private long datetime;
 		private int passes;
-		private Location location;
+		private Coordinates location;
 
 		private Builder() {
 		}
@@ -82,7 +82,7 @@ public class PassTimesRequest {
 			return this;
 		}
 
-		public Builder location(Location location) {
+		public Builder location(Coordinates location) {
 			this.location = location;
 			return this;
 		}

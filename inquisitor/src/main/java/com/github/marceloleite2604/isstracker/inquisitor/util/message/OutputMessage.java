@@ -1,4 +1,4 @@
-package com.github.marceloleite2604.isstracker.inquisitor.model.message;
+package com.github.marceloleite2604.isstracker.inquisitor.util.message;
 
 import com.github.marceloleite2604.blimp.Message;
 import java.io.File;
@@ -6,7 +6,7 @@ import java.io.File;
 public enum OutputMessage implements Message {
 
 	ISS_LOCATION(1),
-	ISS_SPEED(2);
+	ISS_LOCATION_AND_SPEED(2);
 
 	public static final String FILE_PATH = "output/output".replace("/", File.separator);
 

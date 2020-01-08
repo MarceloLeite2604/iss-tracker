@@ -1,8 +1,8 @@
 package com.github.marceloleite2604.isstracker.inquisitor.exception;
 
 import com.github.marceloleite2604.blimp.Blimp;
-import com.github.marceloleite2604.isstracker.inquisitor.model.message.ErrorMessage;
 import com.github.marceloleite2604.isstracker.inquisitor.util.InquisitorApplicationContext;
+import com.github.marceloleite2604.isstracker.inquisitor.util.message.ErrorMessage;
 
 public class InquisitorException extends Exception {
 

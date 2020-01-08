@@ -1,6 +1,6 @@
 package com.github.marceloleite2604.isstracker.inquisitor.bo;
 
-import com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.Location;
+import com.github.marceloleite2604.isstracker.inquisitor.model.Coordinates;
 import com.github.marceloleite2604.isstracker.inquisitor.util.LocationUtil;
 import java.time.Duration;
 import javax.inject.Inject;
@@ -18,9 +18,9 @@ public class UnitsBO {
 	@Inject
 	private LocationUtil locationUtil;
 
-	public double calculateSpeedKmh(Location start, Location end, double altitude, Duration duration) {
-		Location startInRadians = locationUtil.asRadians(start);
-		Location endInRadians = locationUtil.asRadians(end);
+	public double calculateSpeedKmh(Coordinates start, Coordinates end, double altitude, Duration duration) {
+		Coordinates startInRadians = locationUtil.asRadians(start);
+		Coordinates endInRadians = locationUtil.asRadians(end);
 		
 		double radius = EARTH_RADIUS_METERS + altitude;
 		

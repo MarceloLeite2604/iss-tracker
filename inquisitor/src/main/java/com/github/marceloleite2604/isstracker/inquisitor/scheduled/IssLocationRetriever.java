@@ -2,14 +2,12 @@ package com.github.marceloleite2604.isstracker.inquisitor.scheduled;
 
 import com.github.marceloleite2604.blimp.Blimp;
 import com.github.marceloleite2604.isstracker.inquisitor.bo.IssApiBO;
-import com.github.marceloleite2604.isstracker.inquisitor.bo.UnitsBO;
-import com.github.marceloleite2604.isstracker.inquisitor.model.message.OutputMessage;
-import com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.Location;
+import com.github.marceloleite2604.isstracker.inquisitor.bo.IssPositionBO;
+import com.github.marceloleite2604.isstracker.inquisitor.model.db.IssPosition;
+import com.github.marceloleite2604.isstracker.inquisitor.model.mapper.LocationNowResponseToIssPositionMapper;
 import com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.locationnow.LocationNowResponse;
-import com.github.marceloleite2604.util.time.zoned.ZonedDateTimeUtil;
-import java.time.Duration;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import com.github.marceloleite2604.isstracker.inquisitor.util.message.OutputMessage;
+import java.util.Objects;
 import java.util.Optional;
 import javax.inject.Inject;
 import org.slf4j.Logger;
@@ -20,26 +18,21 @@ import org.springframework.stereotype.Component;
 @Component
 public class IssLocationRetriever {
 
-	private static final long EXECUTION_PERIOD_MILLIS = 60000;
-
 	private static final Logger LOGGER = LoggerFactory.getLogger(IssLocationRetriever.class);
 
-	private static final double ISS_FLIGHT_ALTITUDE_METERS = 408000.0;
+	private static final long EXECUTION_PERIOD_MILLIS = 60000;
 
 	@Inject
-	private IssApiBO issApiBo;
+	private IssApiBO issApiBO;
 
 	@Inject
-	private UnitsBO unitsBo;
+	private IssPositionBO issPositionBO;
 
 	@Inject
 	private Blimp blimp;
 
 	@Inject
-	private ZonedDateTimeUtil zonedDateTimeUtil;
-
-	@Inject
-	private ZoneId zoneId;
+	private LocationNowResponseToIssPositionMapper locationNowResponseToIssPositionMapper;
 
 	private Optional<LocationNowResponse> previousLocationResponse;
 
@@ -49,49 +42,45 @@ public class IssLocationRetriever {
 
 	@Scheduled(fixedDelay = EXECUTION_PERIOD_MILLIS)
 	public void retrieve() {
-		Optional<LocationNowResponse> locationNowResponse = issApiBo.locationNow();
-		locationNowResponse.ifPresent(this::logInformation);
+		Optional<LocationNowResponse> locationNowResponse = issApiBO.locationNow();
+		locationNowResponse.ifPresent(this::processLocationNowResponse);
 		previousLocationResponse = locationNowResponse;
 	}
 
-	private void logInformation(LocationNowResponse locationNowResponse) {
-		logLocation(locationNowResponse);
-		logSpeed(locationNowResponse);
+	private void processLocationNowResponse(LocationNowResponse locationNowResponse) {
+		IssPosition issPosition = locationNowResponseToIssPositionMapper.map(locationNowResponse,
+				previousLocationResponse);
+		log(issPosition);
+		saveIssPosition(issPosition);
 	}
 
-	private void logLocation(LocationNowResponse locationNowResponse) {
+	private void saveIssPosition(IssPosition issPosition) {
+		issPositionBO.save(issPosition);
+	}
+
+	private void log(IssPosition issPosition) {
 		if (LOGGER.isInfoEnabled()) {
-			ZonedDateTime zonedDateTime = zonedDateTimeUtil
-					.convertFromEpochTime(locationNowResponse.getTimestamp());
-			ZonedDateTime localZonedDateTime = zonedDateTime.withZoneSameInstant(zoneId);
-			String time = zonedDateTimeUtil.toString(localZonedDateTime);
-
-			String message = blimp.getMessage(OutputMessage.ISS_LOCATION, time,
-					locationNowResponse.getIssPosition());
-			LOGGER.info(message);
+			LOGGER.info(elaborateLogMessage(issPosition));
 		}
 	}
 
-	private void logSpeed(LocationNowResponse locationNowResponse) {
-		if (LOGGER.isInfoEnabled() && previousLocationResponse.isPresent()) {
+	private String elaborateLogMessage(IssPosition issPosition) {
 
-			long previousTimestamp = previousLocationResponse.get()
-					.getTimestamp();
-			long currentTimestamp = locationNowResponse.getTimestamp();
-			Duration duration = Duration.ofSeconds(currentTimestamp - previousTimestamp);
-			
-			double issSpeed = calculateIssSpeed(previousLocationResponse.get()
-					.getIssPosition(), locationNowResponse.getIssPosition(), duration);
+		String message;
 
-			String message = blimp.getMessage(OutputMessage.ISS_SPEED, issSpeed);
-			LOGGER.info(message);
+		if (Objects.isNull(issPosition.getSpeed())) {
+			message = blimp.getMessage(OutputMessage.ISS_LOCATION, issPosition.getCoordinates()
+					.getLatitude(),
+					issPosition.getCoordinates()
+							.getLongitude());
+		} else {
+			message = blimp.getMessage(OutputMessage.ISS_LOCATION_AND_SPEED,
+					issPosition.getCoordinates()
+							.getLatitude(),
+					issPosition.getCoordinates()
+							.getLongitude(),
+					issPosition.getSpeed());
 		}
-	}
-
-	private double calculateIssSpeed(Location previousLocation, Location currentLocation,
-			Duration duration) {
-
-		return unitsBo.calculateSpeedKmh(previousLocation, currentLocation,
-				ISS_FLIGHT_ALTITUDE_METERS, duration);
+		return message;
 	}
 }

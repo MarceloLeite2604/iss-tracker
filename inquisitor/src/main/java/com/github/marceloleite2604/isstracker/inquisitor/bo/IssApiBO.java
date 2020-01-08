@@ -1,7 +1,7 @@
 package com.github.marceloleite2604.isstracker.inquisitor.bo;
 
 import com.github.marceloleite2604.isstracker.inquisitor.dao.IssApiDAO;
-import com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.Location;
+import com.github.marceloleite2604.isstracker.inquisitor.model.Coordinates;
 import com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.locationnow.LocationNowResponse;
 import com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.passtimes.PassTimesRequest;
 import com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.passtimes.PassTimesResponse;
@@ -28,7 +28,7 @@ public class IssApiBO {
 		return issDAO.passTimes(passTimesRequest);
 	}
 
-	public Optional<PassTimesResponse> passTimes(Location location, int altitude,
+	public Optional<PassTimesResponse> passTimes(Coordinates location, int altitude,
 			ZonedDateTime zonedDateTime, int passes) {
 		
 		long datetime = zonedDateTimeUtil.convertAsEpochTime(zonedDateTime);

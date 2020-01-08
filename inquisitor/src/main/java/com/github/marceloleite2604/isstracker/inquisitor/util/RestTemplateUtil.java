@@ -3,7 +3,7 @@ package com.github.marceloleite2604.isstracker.inquisitor.util;
 import com.github.marceloleite2604.blimp.Blimp;
 import com.github.marceloleite2604.isstracker.inquisitor.exception.InquisitorHttpRequestException;
 import com.github.marceloleite2604.isstracker.inquisitor.model.ExchangeRequest;
-import com.github.marceloleite2604.isstracker.inquisitor.model.message.ErrorMessage;
+import com.github.marceloleite2604.isstracker.inquisitor.util.message.ErrorMessage;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
