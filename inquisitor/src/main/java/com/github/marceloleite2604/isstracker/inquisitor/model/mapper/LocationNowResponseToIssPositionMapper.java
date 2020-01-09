@@ -1,8 +1,8 @@
 package com.github.marceloleite2604.isstracker.inquisitor.model.mapper;
 
-import com.github.marceloleite2604.isstracker.inquisitor.bo.UnitsBO;
 import com.github.marceloleite2604.isstracker.inquisitor.model.db.IssPosition;
 import com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.locationnow.LocationNowResponse;
+import com.github.marceloleite2604.isstracker.inquisitor.util.UnitsUtil;
 import com.github.marceloleite2604.util.time.zoned.ZonedDateTimeUtil;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 public class LocationNowResponseToIssPositionMapper {
 
 	@Inject
-	private UnitsBO unitsBO;
+	private UnitsUtil unitsBO;
 
 	private static final double ISS_FLIGHT_ALTITUDE_METERS = 408000.0;
 

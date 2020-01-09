@@ -1,13 +1,12 @@
-package com.github.marceloleite2604.isstracker.inquisitor.bo;
+package com.github.marceloleite2604.isstracker.inquisitor.util;
 
 import com.github.marceloleite2604.isstracker.inquisitor.model.Coordinates;
-import com.github.marceloleite2604.isstracker.inquisitor.util.LocationUtil;
 import java.time.Duration;
 import javax.inject.Inject;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UnitsBO {
+public class UnitsUtil {
 	
 	private static final double EARTH_RADIUS_METERS = 6378100.0;
 	

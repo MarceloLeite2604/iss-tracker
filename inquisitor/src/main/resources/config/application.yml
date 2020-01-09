@@ -1,3 +1,5 @@
+server:
+  port: 8081
 inquisitor:
   # locale: pt-br
   # zone-id: America/Sao_Paulo

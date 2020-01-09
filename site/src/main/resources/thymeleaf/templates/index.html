@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale}" lang="en">
+	<head>
+		<title th:text="#{index.title}">Page title</title>
+		<meta charset="utf-8" />
+	</head>
+	<body>
+		<h1 th:text="#{index.title}">Page title</h1>
+		<div th:replace="~{components/image :: image(imagePath = 'iss.jpg')}"></div>
+		<div th:replace="~{average-speed :: average-speed}"></div>
+	</body>
+</html>
