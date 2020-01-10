@@ -6,7 +6,8 @@ import java.io.File;
 public enum OutputMessage implements Message {
 
 	ISS_LOCATION(1),
-	ISS_LOCATION_AND_SPEED(2);
+	ISS_LOCATION_AND_SPEED(2),
+	NEW_MAP_GENERATED(3);
 
 	public static final String FILE_PATH = "output/output".replace("/", File.separator);
 

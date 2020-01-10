@@ -26,5 +26,3 @@ site:
     feedback-mode: CBC
     padding-scheme: PKCS5Padding
     key: T5Sk8TKJf5G6HPvxUraKFfgcyMF2tRzf
-  google:
-    api-key-environment-variable: GOOGLE_API_KEY

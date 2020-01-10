@@ -1,7 +1,7 @@
 package com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.locationnow;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.marceloleite2604.isstracker.inquisitor.model.Coordinates;
+import com.github.marceloleite2604.isstracker.commons.model.Coordinates;
 
 public class LocationNowResponse {
 

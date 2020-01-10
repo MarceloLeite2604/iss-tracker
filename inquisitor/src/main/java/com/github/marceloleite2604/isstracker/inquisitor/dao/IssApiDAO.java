@@ -1,6 +1,7 @@
 package com.github.marceloleite2604.isstracker.inquisitor.dao;
 
 import com.github.marceloleite2604.blimp.Blimp;
+import com.github.marceloleite2604.isstracker.inquisitor.configuration.BeanNames;
 import com.github.marceloleite2604.isstracker.inquisitor.exception.InquisitorHttpRequestException;
 import com.github.marceloleite2604.isstracker.inquisitor.model.ExchangeRequest;
 import com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.astros.AstrosResponse;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javax.inject.Inject;
+import javax.inject.Named;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.slf4j.Logger;
@@ -21,6 +23,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 @Component
 public class IssApiDAO {
@@ -32,6 +35,10 @@ public class IssApiDAO {
 	private static final String ISS_PASS_PATH = "iss-pass.json";
 
 	private static final String ASTROS_PATH = "astros.json";
+
+	@Inject
+	@Named(BeanNames.OPEN_NOTIFY_API_REST_TEMPLATE)
+	private RestTemplate restTemplate;
 
 	@Inject
 	private RestTemplateUtil restTemplateUtil;
@@ -50,7 +57,7 @@ public class IssApiDAO {
 
 		try {
 			ResponseEntity<LocationNowResponse> responseEntity = restTemplateUtil
-					.exchange(exchangeRequest);
+					.exchange(restTemplate, exchangeRequest);
 			return Optional.of(responseEntity.getBody());
 		} catch (InquisitorHttpRequestException exception) {
 			LOGGER.error(blimp.getMessage(ErrorMessage.ERROR_RETRIEVING_ISS_LOCATION_NOW));
@@ -65,7 +72,7 @@ public class IssApiDAO {
 
 		try {
 			ResponseEntity<PassTimesResponse> responseEntity = restTemplateUtil
-					.exchange(exchangeRequest);
+					.exchange(restTemplate, exchangeRequest);
 			return Optional.of(responseEntity.getBody());
 		} catch (InquisitorHttpRequestException exception) {
 			LOGGER.error(blimp.getMessage(ErrorMessage.ERROR_RETRIEVING_ISS_PASS_TIMES));
@@ -113,8 +120,8 @@ public class IssApiDAO {
 				.build();
 
 		try {
-			ResponseEntity<AstrosResponse> responseEntity = restTemplateUtil
-					.exchange(exchangeRequest);
+			ResponseEntity<AstrosResponse> responseEntity = restTemplateUtil.exchange(restTemplate,
+					exchangeRequest);
 			return Optional.of(responseEntity.getBody());
 		} catch (InquisitorHttpRequestException exception) {
 			LOGGER.error(blimp.getMessage(ErrorMessage.ERROR_RETRIEVING_ISS_ASTRONAUTS));

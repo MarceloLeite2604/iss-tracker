@@ -13,7 +13,10 @@ public class SiteWebMvcConfigurer implements WebMvcConfigurer {
 
 	@SuppressWarnings("squid:S1075")
 	public static final String IMG_PATH_ANT_MATCHER = "/img/**";
-	
+
+	@SuppressWarnings("squid:S1075")
+	public static final String CSS_PATH_ANT_MATCHER = "/css/**";
+
 	private static final CacheControl CACHE_CONTROL = CacheControl.maxAge(7, TimeUnit.DAYS);
 
 	@Override
@@ -21,6 +24,10 @@ public class SiteWebMvcConfigurer implements WebMvcConfigurer {
 
 		registry.addResourceHandler(IMG_PATH_ANT_MATCHER)
 				.addResourceLocations("classpath:thymeleaf/static/img/")
+				.setCacheControl(CACHE_CONTROL);
+
+		registry.addResourceHandler(CSS_PATH_ANT_MATCHER)
+				.addResourceLocations("classpath:thymeleaf/static/css/")
 				.setCacheControl(CACHE_CONTROL);
 	}
 

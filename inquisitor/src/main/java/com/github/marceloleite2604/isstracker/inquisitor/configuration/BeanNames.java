@@ -4,6 +4,8 @@ public final class BeanNames {
 	
 	public static final String URI_TEMPLATE_HANDLER = "uriTemplateHandler";
 	
+	public static final String OPEN_NOTIFY_API_REST_TEMPLATE = "openNotifyApiRestTemplate";
+	
 	public static final String REST_TEMPLATE = "restTemplate";
 	
 	public static final String BLIMP = "blimp";

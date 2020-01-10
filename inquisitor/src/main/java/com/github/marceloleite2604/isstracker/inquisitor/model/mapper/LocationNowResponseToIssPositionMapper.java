@@ -1,6 +1,6 @@
 package com.github.marceloleite2604.isstracker.inquisitor.model.mapper;
 
-import com.github.marceloleite2604.isstracker.inquisitor.model.db.IssPosition;
+import com.github.marceloleite2604.isstracker.commons.model.db.IssPosition;
 import com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.locationnow.LocationNowResponse;
 import com.github.marceloleite2604.isstracker.inquisitor.util.UnitsUtil;
 import com.github.marceloleite2604.util.time.zoned.ZonedDateTimeUtil;

@@ -1,17 +1,16 @@
 package com.github.marceloleite2604.isstracker.site.service;
 
 import com.github.marceloleite2604.blimp.Blimp;
-import com.github.marceloleite2604.isstracker.site.bo.IssPositionBO;
-import com.github.marceloleite2604.isstracker.site.exeption.GoogleApiUsageException;
-import com.github.marceloleite2604.isstracker.site.model.Coordinates;
-import com.github.marceloleite2604.isstracker.site.model.db.IssPosition;
-import com.github.marceloleite2604.isstracker.site.util.google.GoogleMapsStaticUtil;
+import com.github.marceloleite2604.isstracker.commons.model.db.Map;
+import com.github.marceloleite2604.isstracker.site.bo.MapBO;
 import com.github.marceloleite2604.isstracker.site.util.message.ErrorMessage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.Optional;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.IOUtils;
@@ -29,33 +28,46 @@ public class MapService {
 	private Blimp blimp;
 
 	@Inject
-	private IssPositionBO issPositionBO;
-
-	@Inject
-	private GoogleMapsStaticUtil googleMapsStaticUtil;
+	private MapBO mapBO;
 
 	public void get(HttpServletResponse httpServletResponse) {
 
-		try (InputStream inputStream = new ByteArrayInputStream(retrieveMapImage())) {
+		Optional<Map> optionalMap = mapBO.findMostRecent();
 
-			IOUtils.copy(inputStream, httpServletResponse.getOutputStream());
-		} catch (GoogleApiUsageException | IOException exception) {
-			String message = blimp.getMessage(ErrorMessage.ERROR_RETRIEVING_MAP);
-			LOGGER.error(message, exception);
-			httpServletResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+		if (optionalMap.isPresent()) {
+			Map map = optionalMap.get();
+			if (isRecentMap(map)) {
+				returnMap(map, httpServletResponse);
+			} else {
+				returnMapUnavailable(httpServletResponse);
+			}
+		} else {
+			returnMapUnavailable(httpServletResponse);
 		}
 
 	}
 
-	private byte[] retrieveMapImage() throws GoogleApiUsageException {
+	private boolean isRecentMap(Map map) {
+		LocalDateTime nowAtZoneId = ZonedDateTime.now()
+				.withZoneSameInstant(ZoneId.of("UTC"))
+				.toLocalDateTime();
+		return map.getInstant()
+				.isAfter(nowAtZoneId.minusMinutes(10));
+	}
 
-		List<IssPosition> positions = issPositionBO.findLastHour();
+	private void returnMap(Map map, HttpServletResponse httpServletResponse) {
+		try (InputStream inputStream = new ByteArrayInputStream(map.getData())) {
 
-		List<Coordinates> coordinates = positions.stream()
-				.map(IssPosition::getCoordinates)
-				.collect(Collectors.toList());
+			IOUtils.copy(inputStream, httpServletResponse.getOutputStream());
+		} catch (IOException exception) {
+			String message = blimp.getMessage(ErrorMessage.ERROR_RETRIEVING_MAP);
+			LOGGER.error(message, exception);
+			httpServletResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+		}
+	}
 
-		return googleMapsStaticUtil.retrieveMapWithCoordinates(coordinates);
+	private void returnMapUnavailable(HttpServletResponse httpServletResponse) {
+		httpServletResponse.setStatus(HttpStatus.SERVICE_UNAVAILABLE.value());
 	}
 
 }

@@ -1,6 +1,6 @@
 package com.github.marceloleite2604.isstracker.site.model.dto;
 
-import com.github.marceloleite2604.isstracker.site.model.db.IssPosition;
+import com.github.marceloleite2604.isstracker.commons.model.db.IssPosition;
 import java.util.Collections;
 import java.util.List;
 

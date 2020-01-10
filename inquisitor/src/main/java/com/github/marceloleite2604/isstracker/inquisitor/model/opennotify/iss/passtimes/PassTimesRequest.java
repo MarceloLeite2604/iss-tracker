@@ -1,7 +1,7 @@
 package com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.passtimes;
 
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
-import com.github.marceloleite2604.isstracker.inquisitor.model.Coordinates;
+import com.github.marceloleite2604.isstracker.commons.model.Coordinates;
 
 public class PassTimesRequest {
 

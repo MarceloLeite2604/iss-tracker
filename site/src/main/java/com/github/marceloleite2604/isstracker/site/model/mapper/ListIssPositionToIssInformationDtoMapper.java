@@ -1,6 +1,6 @@
 package com.github.marceloleite2604.isstracker.site.model.mapper;
 
-import com.github.marceloleite2604.isstracker.site.model.db.IssPosition;
+import com.github.marceloleite2604.isstracker.commons.model.db.IssPosition;
 import com.github.marceloleite2604.isstracker.site.model.dto.IssInformationDTO;
 import java.util.List;
 import java.util.Objects;
@@ -14,6 +14,7 @@ public class ListIssPositionToIssInformationDtoMapper {
 		Double averageSpeed = calculateAverageSpeed(issPositions);
 
 		return IssInformationDTO.builder()
+				// TODO Do not reuse persistent object. Copy it!
 				.issPositions(issPositions)
 				.averageSpeed(averageSpeed)
 				.build();

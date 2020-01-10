@@ -1,6 +1,6 @@
 package com.github.marceloleite2604.isstracker.inquisitor.util;
 
-import com.github.marceloleite2604.isstracker.inquisitor.model.Coordinates;
+import com.github.marceloleite2604.isstracker.commons.model.Coordinates;
 import org.springframework.stereotype.Component;
 
 @Component

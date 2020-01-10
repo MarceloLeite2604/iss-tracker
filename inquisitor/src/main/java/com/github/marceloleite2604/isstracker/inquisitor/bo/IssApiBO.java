@@ -1,7 +1,7 @@
 package com.github.marceloleite2604.isstracker.inquisitor.bo;
 
+import com.github.marceloleite2604.isstracker.commons.model.Coordinates;
 import com.github.marceloleite2604.isstracker.inquisitor.dao.IssApiDAO;
-import com.github.marceloleite2604.isstracker.inquisitor.model.Coordinates;
 import com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.locationnow.LocationNowResponse;
 import com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.passtimes.PassTimesRequest;
 import com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.passtimes.PassTimesResponse;

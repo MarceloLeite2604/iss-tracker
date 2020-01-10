@@ -23,14 +23,11 @@ import org.springframework.web.client.RestTemplate;
 public class RestTemplateUtil {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(RestTemplateUtil.class);
-	
-	@Inject
-	private RestTemplate restTemplate;
 
 	@Inject
 	private Blimp blimp;
 
-	public <I, O> ResponseEntity<O> exchange(ExchangeRequest<I, O> exchangeRequest) throws InquisitorHttpRequestException {
+	public <I, O> ResponseEntity<O> exchange(RestTemplate restTemplate, ExchangeRequest<I, O> exchangeRequest) throws InquisitorHttpRequestException {
 		HttpEntity<I> httpEntity = createHttpEntity(exchangeRequest.getInputObject(),
 				exchangeRequest.getInputMediaType(), exchangeRequest.getAcceptedMediaTypes(),
 				exchangeRequest.getHeaderValues());

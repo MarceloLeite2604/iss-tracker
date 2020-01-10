@@ -1,9 +1,11 @@
 package com.github.marceloleite2604.isstracker.inquisitor.scheduled;
 
 import com.github.marceloleite2604.blimp.Blimp;
+import com.github.marceloleite2604.isstracker.commons.model.db.IssPosition;
+import com.github.marceloleite2604.isstracker.commons.model.db.Map;
 import com.github.marceloleite2604.isstracker.inquisitor.bo.IssApiBO;
 import com.github.marceloleite2604.isstracker.inquisitor.bo.IssPositionBO;
-import com.github.marceloleite2604.isstracker.inquisitor.model.db.IssPosition;
+import com.github.marceloleite2604.isstracker.inquisitor.bo.MapBO;
 import com.github.marceloleite2604.isstracker.inquisitor.model.mapper.LocationNowResponseToIssPositionMapper;
 import com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.locationnow.LocationNowResponse;
 import com.github.marceloleite2604.isstracker.inquisitor.util.message.OutputMessage;
@@ -29,6 +31,9 @@ public class IssLocationRetriever {
 	private IssPositionBO issPositionBO;
 
 	@Inject
+	private MapBO mapBO;
+
+	@Inject
 	private Blimp blimp;
 
 	@Inject
@@ -52,6 +57,7 @@ public class IssLocationRetriever {
 				previousLocationResponse);
 		log(issPosition);
 		saveIssPosition(issPosition);
+		retrieveAndSaveMap();
 	}
 
 	private void saveIssPosition(IssPosition issPosition) {
@@ -83,4 +89,16 @@ public class IssLocationRetriever {
 		}
 		return message;
 	}
+
+	private void retrieveAndSaveMap() {
+
+		mapBO.generateMap(issPositionBO.findLastHour())
+				.ifPresent(this::saveMap);
+	}
+
+	private void saveMap(Map map) {
+		mapBO.save(map);
+		LOGGER.info(blimp.getMessage(OutputMessage.NEW_MAP_GENERATED));
+	}
+
 }

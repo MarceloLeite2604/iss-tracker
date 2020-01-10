@@ -4,6 +4,14 @@ inquisitor:
   # locale: pt-br
   # zone-id: America/Sao_Paulo
   api-base-url: http://api.open-notify.org
+  route-map:
+    generation:
+      update-time-minutes: 10
+      minimal-positions: 10
+    style:
+      route-color: "0xff000050"
+      marker-color: "0xff0000a0"
+      image-size: 640x480
   database:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/iss_tracker_db
@@ -15,3 +23,6 @@ inquisitor:
     feedback-mode: CBC
     padding-scheme: PKCS5Padding
     key: 5n9rT9ZKqAF6tk8OJqRU+FRGjBrmiVd8
+  google:
+    api-key-environment-variable: GOOGLE_API_KEY
+    maps-static-api-url: https://maps.googleapis.com/maps/api/staticmap

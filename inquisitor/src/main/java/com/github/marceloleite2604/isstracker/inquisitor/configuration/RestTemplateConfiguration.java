@@ -15,8 +15,8 @@ public class RestTemplateConfiguration {
 		return new DefaultUriBuilderFactory(programProperties.getApiBaseUrl());
 	}
 
-	@Bean(BeanNames.REST_TEMPLATE)
-	public RestTemplate createRestTemplate(UriTemplateHandler uriTemplateHandler) {
+	@Bean(BeanNames.OPEN_NOTIFY_API_REST_TEMPLATE)
+	public RestTemplate createOpenNotifyApiRestTemplate(UriTemplateHandler uriTemplateHandler) {
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.setUriTemplateHandler(uriTemplateHandler);
 		return restTemplate;

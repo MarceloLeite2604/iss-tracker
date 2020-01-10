@@ -1,7 +1,7 @@
 package com.github.marceloleite2604.isstracker.site.service;
 
+import com.github.marceloleite2604.isstracker.commons.model.db.IssPosition;
 import com.github.marceloleite2604.isstracker.site.bo.IssPositionBO;
-import com.github.marceloleite2604.isstracker.site.model.db.IssPosition;
 import com.github.marceloleite2604.isstracker.site.model.dto.IssInformationDTO;
 import com.github.marceloleite2604.isstracker.site.model.mapper.ListIssPositionToIssInformationDtoMapper;
 import com.github.marceloleite2604.isstracker.site.util.thymeleaf.Attributes;
