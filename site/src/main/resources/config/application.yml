@@ -1,8 +1,10 @@
 server:
-  port: 8080
   servlet:
     context-path: /iss-tracker
 spring:
+  profiles:
+    active:
+    - "@activeProfile@"
   jpa:
     show-sql: true
   thymeleaf:
@@ -15,14 +17,7 @@ spring:
 site:
   # locale: pt-br
   # zone-id: America/Sao_Paulo
-  database:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/iss_tracker_db
-    username: site
-    password: hjgDvAV95Yw+pJDMUvzTFi7XKZ0k3AT/
-    connections: 4
   encryption:
     cryptographic-algorythm: DESede
     feedback-mode: CBC
     padding-scheme: PKCS5Padding
-    key: T5Sk8TKJf5G6HPvxUraKFfgcyMF2tRzf

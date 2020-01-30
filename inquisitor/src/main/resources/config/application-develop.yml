@@ -7,3 +7,6 @@ inquisitor:
     username: inquisitor
     password: K2yXylqF/zFWHDu3p8eYqg==
     connections: 4
+site:    
+  encryption:
+    key: 5n9rT9ZKqAF6tk8OJqRU+FRGjBrmiVd8

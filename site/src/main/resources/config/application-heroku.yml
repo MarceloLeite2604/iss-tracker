@@ -1,4 +1,7 @@
-inquisitor:
+spring:
+  jpa:
+    show-sql: false
+site:
   database:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://d6ybckq58s9ru745.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/c9gp8l5jcf37rtra
