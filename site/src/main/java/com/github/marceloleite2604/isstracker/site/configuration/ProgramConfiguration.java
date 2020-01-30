@@ -78,6 +78,7 @@ public class ProgramConfiguration {
 				.cryptographicAlgorithm(encryptionProperties.getCryptographicAlgorythm())
 				.feedbackMode(encryptionProperties.getFeedbackMode())
 				.paddingScheme(encryptionProperties.getPaddingScheme())
+				.keyEnvironmentVariableName(encryptionProperties.getKeyEnvironmentVariableName())
 				.build();
 	}
 
