@@ -6,7 +6,6 @@ inquisitor:
     url: jdbc:mysql://localhost:3306/iss_tracker_db
     username: inquisitor
     password: K2yXylqF/zFWHDu3p8eYqg==
-    connections: 4
-site:    
+    connections: 4    
   encryption:
     key: 5n9rT9ZKqAF6tk8OJqRU+FRGjBrmiVd8
