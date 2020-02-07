@@ -8,8 +8,8 @@ inquisitor:
   api-base-url: http://api.open-notify.org
   route-map:
     generation:
-      update-time-minutes: 10
-      minimal-positions: 10
+      update-time-minutes: 10 
+      minimal-positions: 1 
     style:
       route-color: "0xff000050"
       marker-color: "0xff0000a0"
