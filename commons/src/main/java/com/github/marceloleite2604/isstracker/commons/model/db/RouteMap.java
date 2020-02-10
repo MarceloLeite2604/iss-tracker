@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "route_maps")
-public class Map {
+public class RouteMap {
 
 	@Id
 	private LocalDateTime instant;
@@ -16,11 +16,11 @@ public class Map {
 	@Column
 	private byte[] data;
 	
-	public Map() {
+	public RouteMap() {
 		super();
 	}
 
-	private Map(Builder builder) {
+	private RouteMap(Builder builder) {
 		this.instant = builder.instant;
 		this.data = builder.data;
 	}
@@ -35,7 +35,7 @@ public class Map {
 
 	@Override
 	public String toString() {
-		return "Map [instant=" + instant + ", data(size)=" + (data == null ? 0 : data.length) + "]";
+		return "RouteMap [instant=" + instant + ", data(size)=" + (data == null ? 0 : data.length) + "]";
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class Map {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Map other = (Map) obj;
+		RouteMap other = (RouteMap) obj;
 		if (instant == null) {
 			if (other.instant != null)
 				return false;
@@ -85,8 +85,8 @@ public class Map {
 			return this;
 		}
 
-		public Map build() {
-			return new Map(this);
+		public RouteMap build() {
+			return new RouteMap(this);
 		}
 	}
 

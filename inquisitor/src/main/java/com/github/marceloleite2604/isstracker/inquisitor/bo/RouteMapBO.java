@@ -1,10 +1,10 @@
 package com.github.marceloleite2604.isstracker.inquisitor.bo;
 
 import com.github.marceloleite2604.blimp.Blimp;
-import com.github.marceloleite2604.isstracker.commons.dao.MapDAO;
+import com.github.marceloleite2604.isstracker.commons.dao.RouteMapDAO;
 import com.github.marceloleite2604.isstracker.commons.model.Coordinates;
 import com.github.marceloleite2604.isstracker.commons.model.db.IssPosition;
-import com.github.marceloleite2604.isstracker.commons.model.db.Map;
+import com.github.marceloleite2604.isstracker.commons.model.db.RouteMap;
 import com.github.marceloleite2604.isstracker.inquisitor.exception.GoogleApiUsageException;
 import com.github.marceloleite2604.isstracker.inquisitor.properties.RouteMapGenerationProperties;
 import com.github.marceloleite2604.isstracker.inquisitor.util.google.GoogleMapsStaticUtil;
@@ -22,12 +22,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 @Component
-public class MapBO {
+public class RouteMapBO {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(MapBO.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(RouteMapBO.class);
 
 	@Inject
-	private MapDAO mapDAO;
+	private RouteMapDAO routeMapDAO;
 
 	@Inject
 	private GoogleMapsStaticUtil googleMapsStaticUtil;
@@ -41,15 +41,15 @@ public class MapBO {
 	@Inject
 	private RouteMapGenerationProperties routeMapGenerationProperties;
 
-	public Map save(Map map) {
-		return mapDAO.save(map);
+	public RouteMap save(RouteMap map) {
+		return routeMapDAO.save(map);
 	}
 
-	public Optional<Map> findMostRecent() {
-		return mapDAO.findTop1ByOrderByInstantDesc();
+	public Optional<RouteMap> findMostRecent() {
+		return routeMapDAO.findTop1ByOrderByInstantDesc();
 	}
 
-	public Optional<Map> generateMap(List<IssPosition> issPositions) {
+	public Optional<RouteMap> generateMap(List<IssPosition> issPositions) {
 
 		if (!shouldGenerateNewMap(findMostRecent()) || !canGenerateNewMap(issPositions)) {
 			return Optional.empty();
@@ -64,12 +64,12 @@ public class MapBO {
 		LocalDateTime instant = issPositions.get(0)
 				.getInstant();
 
-		Optional<Map> optionalMap;
+		Optional<RouteMap> optionalMap;
 
 		try {
 			byte[] data = googleMapsStaticUtil.retrieveMapWithCoordinates(coordinates);
 
-			Map map = Map.builder()
+			RouteMap map = RouteMap.builder()
 					.instant(instant)
 					.data(data)
 					.build();
@@ -85,9 +85,9 @@ public class MapBO {
 		return optionalMap;
 	}
 
-	private boolean shouldGenerateNewMap(Optional<Map> optionalPreviousMap) {
+	private boolean shouldGenerateNewMap(Optional<RouteMap> optionalPreviousMap) {
 
-		if (optionalPreviousMap.isEmpty()) {
+		if (!optionalPreviousMap.isPresent()) {
 			return true;
 		}
 
