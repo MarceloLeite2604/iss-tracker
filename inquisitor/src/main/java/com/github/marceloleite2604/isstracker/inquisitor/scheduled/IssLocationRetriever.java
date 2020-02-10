@@ -2,10 +2,10 @@ package com.github.marceloleite2604.isstracker.inquisitor.scheduled;
 
 import com.github.marceloleite2604.blimp.Blimp;
 import com.github.marceloleite2604.isstracker.commons.model.db.IssPosition;
-import com.github.marceloleite2604.isstracker.commons.model.db.Map;
+import com.github.marceloleite2604.isstracker.commons.model.db.RouteMap;
 import com.github.marceloleite2604.isstracker.inquisitor.bo.IssApiBO;
 import com.github.marceloleite2604.isstracker.inquisitor.bo.IssPositionBO;
-import com.github.marceloleite2604.isstracker.inquisitor.bo.MapBO;
+import com.github.marceloleite2604.isstracker.inquisitor.bo.RouteMapBO;
 import com.github.marceloleite2604.isstracker.inquisitor.model.mapper.LocationNowResponseToIssPositionMapper;
 import com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.locationnow.LocationNowResponse;
 import com.github.marceloleite2604.isstracker.inquisitor.util.message.OutputMessage;
@@ -24,6 +24,8 @@ public class IssLocationRetriever {
 
 	private static final long EXECUTION_PERIOD_MILLIS = 60000;
 
+	private static final long INITIAL_DELAY_MILLIS = 1000;
+
 	@Inject
 	private IssApiBO issApiBO;
 
@@ -31,7 +33,7 @@ public class IssLocationRetriever {
 	private IssPositionBO issPositionBO;
 
 	@Inject
-	private MapBO mapBO;
+	private RouteMapBO mapBO;
 
 	@Inject
 	private Blimp blimp;
@@ -45,7 +47,7 @@ public class IssLocationRetriever {
 		previousLocationResponse = Optional.empty();
 	}
 
-	@Scheduled(fixedDelay = EXECUTION_PERIOD_MILLIS)
+	@Scheduled(fixedDelay = EXECUTION_PERIOD_MILLIS, initialDelay = INITIAL_DELAY_MILLIS)
 	public void retrieve() {
 		Optional<LocationNowResponse> locationNowResponse = issApiBO.locationNow();
 		locationNowResponse.ifPresent(this::processLocationNowResponse);
@@ -96,7 +98,7 @@ public class IssLocationRetriever {
 				.ifPresent(this::saveMap);
 	}
 
-	private void saveMap(Map map) {
+	private void saveMap(RouteMap map) {
 		mapBO.save(map);
 		LOGGER.info(blimp.getMessage(OutputMessage.NEW_MAP_GENERATED));
 	}

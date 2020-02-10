@@ -10,15 +10,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class IssPositionDAO {
 
-	@Inject
-	private IssPositionRepository issPositionRepository;
+  @Inject
+  private IssPositionRepository issPositionRepository;
 
-	public List<IssPosition> findAllByInstantBetweenOrderByInstantDesc(LocalDateTime start,
-			LocalDateTime end) {
-		return issPositionRepository.findAllByInstantBetweenOrderByInstantDesc(start, end);
-	}
-	
-	public IssPosition save(IssPosition issPosition) {
-		return issPositionRepository.save(issPosition);
-	}
+  public List<IssPosition> findAllByInstantBetweenOrderByInstantDesc(LocalDateTime start,
+      LocalDateTime end) {
+    return issPositionRepository.findAllByInstantBetweenOrderByInstantDesc(start, end);
+  }
+
+  public IssPosition save(IssPosition issPosition) {
+    return issPositionRepository.save(issPosition);
+  }
+
+  public Long deleteByInstantLessThan(LocalDateTime instant) {
+    return issPositionRepository.deleteByInstantLessThan(instant);
+  }
 }

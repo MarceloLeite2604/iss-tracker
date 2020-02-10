@@ -7,7 +7,10 @@ public enum OutputMessage implements Message {
 
 	ISS_LOCATION(1),
 	ISS_LOCATION_AND_SPEED(2),
-	NEW_MAP_GENERATED(3);
+	NEW_MAP_GENERATED(3),
+	NULL_RETURNED_FROM_ISS_POSITION_DELETION_REQUEST(4),
+	OLD_ISS_POSITIONS_DELETION_START(5),
+	OLD_ISS_POSITIONS_DELETION_RESULT(6);
 
 	public static final String FILE_PATH = "output/output".replace("/", File.separator);
 

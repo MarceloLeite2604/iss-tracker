@@ -1,7 +1,7 @@
 package com.github.marceloleite2604.isstracker.site.service;
 
 import com.github.marceloleite2604.blimp.Blimp;
-import com.github.marceloleite2604.isstracker.commons.model.db.Map;
+import com.github.marceloleite2604.isstracker.commons.model.db.RouteMap;
 import com.github.marceloleite2604.isstracker.site.bo.MapBO;
 import com.github.marceloleite2604.isstracker.site.util.message.ErrorMessage;
 import java.io.ByteArrayInputStream;
@@ -32,10 +32,10 @@ public class MapService {
 
 	public void get(HttpServletResponse httpServletResponse) {
 
-		Optional<Map> optionalMap = mapBO.findMostRecent();
+		Optional<RouteMap> optionalMap = mapBO.findMostRecent();
 
 		if (optionalMap.isPresent()) {
-			Map map = optionalMap.get();
+			RouteMap map = optionalMap.get();
 			if (isRecentMap(map)) {
 				returnMap(map, httpServletResponse);
 			} else {
@@ -47,7 +47,7 @@ public class MapService {
 
 	}
 
-	private boolean isRecentMap(Map map) {
+	private boolean isRecentMap(RouteMap map) {
 		LocalDateTime nowAtZoneId = ZonedDateTime.now()
 				.withZoneSameInstant(ZoneId.of("UTC"))
 				.toLocalDateTime();
@@ -55,7 +55,7 @@ public class MapService {
 				.isAfter(nowAtZoneId.minusMinutes(10));
 	}
 
-	private void returnMap(Map map, HttpServletResponse httpServletResponse) {
+	private void returnMap(RouteMap map, HttpServletResponse httpServletResponse) {
 		try (InputStream inputStream = new ByteArrayInputStream(map.getData())) {
 
 			IOUtils.copy(inputStream, httpServletResponse.getOutputStream());

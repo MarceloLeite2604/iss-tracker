@@ -7,14 +7,14 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SiteApplicationContext implements ApplicationContextAware {
+public class IssTrackerApplicationContext implements ApplicationContextAware {
 
 	private static ApplicationContext applicationContext;
 
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) {
-		synchronized (SiteApplicationContext.class) {
-			SiteApplicationContext.applicationContext = applicationContext;
+		synchronized (IssTrackerApplicationContext.class) {
+			IssTrackerApplicationContext.applicationContext = applicationContext;
 		}
 	}
 
