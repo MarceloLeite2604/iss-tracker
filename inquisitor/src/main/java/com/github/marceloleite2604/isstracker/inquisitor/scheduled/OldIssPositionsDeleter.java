@@ -19,7 +19,7 @@ public class OldIssPositionsDeleter {
 	private static final Logger LOGGER = LoggerFactory.getLogger(OldIssPositionsDeleter.class);
 
 	private static final long EXECUTION_PERIOD_MILLIS = 3600000;
-	
+
 	private static final long INITIAL_DELAY_MILLIS = 2000;
 
 	@Inject
@@ -50,7 +50,7 @@ public class OldIssPositionsDeleter {
 
 	private void logPositionDeletionStart(ZonedDateTime timeLimit) {
 		if (LOGGER.isInfoEnabled()) {
-			String stringTimeLimit = zonedDateTimeUtil.toString(timeLimit);
+			String stringTimeLimit = zonedDateTimeUtil.toStringAsIsoOffsetDateTime(timeLimit);
 			String message = blimp.getMessage(OutputMessage.OLD_ISS_POSITIONS_DELETION_START,
 					stringTimeLimit);
 			LOGGER.info(message);

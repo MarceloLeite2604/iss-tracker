@@ -44,11 +44,11 @@ public class LocationNowResponseToIssPositionMapper {
 	}
 
 	private LocalDateTime retrieveUtcDateTime(long epochTime) {
-		ZonedDateTime zonedDateTime = zonedDateTimeUtil.convertFromEpochTime(epochTime);
+		ZonedDateTime zonedDateTime = zonedDateTimeUtil.convertFromEpochTimeToUtcOffset(epochTime);
 		return zonedDateTime.withZoneSameInstant(ZoneId.of("UTC"))
 				.toLocalDateTime();
 	}
-	
+
 	private double calculateSpeed(LocationNowResponse locationNowResponse,
 			LocationNowResponse previousLocationNowResponse) {
 
