@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/page")
+@RequestMapping(PageController.PATH)
 public class PageController {
+	
+	@SuppressWarnings("squid:S1075")
+	public static final String PATH = "/page";
 
 	@Inject
 	private PageService pageService;
