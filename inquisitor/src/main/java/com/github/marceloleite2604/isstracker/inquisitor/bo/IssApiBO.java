@@ -1,11 +1,11 @@
 package com.github.marceloleite2604.isstracker.inquisitor.bo;
 
+import com.figtreelake.util.time.zoned.ZonedDateTimeUtil;
 import com.github.marceloleite2604.isstracker.commons.model.Coordinates;
 import com.github.marceloleite2604.isstracker.inquisitor.dao.IssApiDAO;
 import com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.locationnow.LocationNowResponse;
 import com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.passtimes.PassTimesRequest;
 import com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.passtimes.PassTimesResponse;
-import com.github.marceloleite2604.util.time.zoned.ZonedDateTimeUtil;
 import java.time.ZonedDateTime;
 import java.util.Optional;
 import javax.inject.Inject;

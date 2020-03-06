@@ -1,8 +1,8 @@
 package com.github.marceloleite2604.isstracker.inquisitor.configuration;
 
+import com.figtreelake.sled.Sled;
 import com.github.marceloleite2604.isstracker.inquisitor.properties.DatabaseProperties;
 import com.github.marceloleite2604.isstracker.inquisitor.properties.EncryptionProperties;
-import com.github.marceloleite2604.sled.Sled;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;

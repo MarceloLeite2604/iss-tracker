@@ -1,6 +1,6 @@
 package com.github.marceloleite2604.isstracker.inquisitor.util.message;
 
-import com.github.marceloleite2604.blimp.Message;
+import com.figtreelake.blimp.Message;
 import java.io.File;
 
 public enum OutputMessage implements Message {

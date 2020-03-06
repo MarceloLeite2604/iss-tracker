@@ -1,10 +1,10 @@
 package com.github.marceloleite2604.isstracker.inquisitor.scheduled;
 
-import com.github.marceloleite2604.blimp.Blimp;
+import com.figtreelake.blimp.Blimp;
+import com.figtreelake.util.time.zoned.ZonedDateTimeUtil;
 import com.github.marceloleite2604.isstracker.inquisitor.bo.IssPositionBO;
 import com.github.marceloleite2604.isstracker.inquisitor.properties.RouteMapGenerationProperties;
 import com.github.marceloleite2604.isstracker.inquisitor.util.message.OutputMessage;
-import com.github.marceloleite2604.util.time.zoned.ZonedDateTimeUtil;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import javax.inject.Inject;

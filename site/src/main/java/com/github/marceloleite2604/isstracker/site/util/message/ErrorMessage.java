@@ -1,6 +1,6 @@
 package com.github.marceloleite2604.isstracker.site.util.message;
 
-import com.github.marceloleite2604.blimp.Message;
+import com.figtreelake.blimp.Message;
 import java.io.File;
 
 public enum ErrorMessage implements Message {

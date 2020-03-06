@@ -1,6 +1,6 @@
 package com.github.marceloleite2604.isstracker.inquisitor.scheduled;
 
-import com.github.marceloleite2604.blimp.Blimp;
+import com.figtreelake.blimp.Blimp;
 import com.github.marceloleite2604.isstracker.commons.model.db.IssPosition;
 import com.github.marceloleite2604.isstracker.commons.model.db.RouteMap;
 import com.github.marceloleite2604.isstracker.inquisitor.bo.IssApiBO;

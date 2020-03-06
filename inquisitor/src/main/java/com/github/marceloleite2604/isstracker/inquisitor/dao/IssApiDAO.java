@@ -1,6 +1,6 @@
 package com.github.marceloleite2604.isstracker.inquisitor.dao;
 
-import com.github.marceloleite2604.blimp.Blimp;
+import com.figtreelake.blimp.Blimp;
 import com.github.marceloleite2604.isstracker.inquisitor.configuration.BeanNames;
 import com.github.marceloleite2604.isstracker.inquisitor.exception.InquisitorHttpRequestException;
 import com.github.marceloleite2604.isstracker.inquisitor.model.ExchangeRequest;

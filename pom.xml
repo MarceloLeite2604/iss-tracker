@@ -2,15 +2,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>[2,3)</version>
-    <relativePath />
-  </parent>
-  
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>[2,3)</version>
+		<relativePath />
+	</parent>
+
 	<groupId>com.github.marceloleite2604</groupId>
 	<artifactId>iss-tracker</artifactId>
 	<version>1.0</version>
@@ -20,44 +20,45 @@
 	<description>A site to track International Space Station (ISS) global position.</description>
 	<url>https://github.com/MarceloLeite2064/iss-tracker</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.release>11</maven.compiler.release>
-  </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- <maven.compiler.release>11</maven.compiler.release> -->
+	</properties>
 
-  <modules>
-    <module>commons</module>
+	<modules>
+		<module>commons</module>
 		<module>inquisitor</module>
 		<module>site</module>
 	</modules>
 
-	<distributionManagement>
-    <site>
-      <id>github-pages</id>
-      <url>https://marceloleite2604.github.io/libraries/</url>
-    </site>
-    <repository>
-      <id>github</id>
-      <name>GitHub MarceloLeite2604 Apache Maven Packages</name>
-      <url>https://maven.pkg.github.com/MarceloLeite2604/iss-tracker</url>
-		</repository>
-  </distributionManagement>
+	<profiles>
+		<profile>
+			<id>develop</id>
+			<properties>
+				<activeProfile>develop</activeProfile>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>heroku</id>
+			<properties>
+				<activeProfile>heroku</activeProfile>
+			</properties>
+		</profile>
+	</profiles>
 
-  <profiles>
-    <profile>
-      <id>develop</id>
-      <properties>
-        <activeProfile>develop</activeProfile>
-      </properties>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-    </profile>
-    <profile>
-      <id>heroku</id>
-      <properties>
-        <activeProfile>heroku</activeProfile>
-      </properties>
-    </profile>
-  </profiles>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>11</source>
+					<target>11</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

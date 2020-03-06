@@ -1,6 +1,6 @@
 package com.github.marceloleite2604.isstracker.inquisitor.util;
 
-import com.github.marceloleite2604.blimp.Blimp;
+import com.figtreelake.blimp.Blimp;
 import com.github.marceloleite2604.isstracker.inquisitor.util.message.ErrorMessage;
 import java.awt.Color;
 import java.util.regex.Matcher;

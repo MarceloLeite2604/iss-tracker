@@ -1,6 +1,6 @@
 package com.github.marceloleite2604.isstracker.inquisitor.bo;
 
-import com.github.marceloleite2604.blimp.Blimp;
+import com.figtreelake.blimp.Blimp;
 import com.github.marceloleite2604.isstracker.commons.dao.RouteMapDAO;
 import com.github.marceloleite2604.isstracker.commons.model.Coordinates;
 import com.github.marceloleite2604.isstracker.commons.model.db.IssPosition;

@@ -47,17 +47,17 @@
 		<dependency>
 			<groupId>com.figtreelake</groupId>
 			<artifactId>blimp</artifactId>
-			<version>1.0</version>
+			<version>1.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.figtreelake</groupId>
 			<artifactId>sled</artifactId>
-			<version>1.0</version>
+			<version>1.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.figtreelake</groupId>
 			<artifactId>util</artifactId>
-			<version>1.0</version>
+			<version>1.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>

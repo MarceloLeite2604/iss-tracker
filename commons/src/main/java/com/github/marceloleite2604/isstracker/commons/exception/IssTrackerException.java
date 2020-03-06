@@ -1,7 +1,7 @@
 package com.github.marceloleite2604.isstracker.commons.exception;
 
-import com.github.marceloleite2604.blimp.Blimp;
-import com.github.marceloleite2604.blimp.Message;
+import com.figtreelake.blimp.Blimp;
+import com.figtreelake.blimp.Message;
 import com.github.marceloleite2604.isstracker.commons.util.IssTrackerApplicationContext;
 
 public class IssTrackerException extends Exception {
