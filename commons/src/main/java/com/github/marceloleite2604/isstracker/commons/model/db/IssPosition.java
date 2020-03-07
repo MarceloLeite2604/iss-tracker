@@ -75,16 +75,17 @@ public class IssPosition {
 		if (instant == null) {
 			if (other.instant != null)
 				return false;
-		} else if (!instant.equals(other.instant)) {
-			return false;
+		} else {
+			if (!instant.equals(other.instant))
+				return false;
 		}
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "IssPosition [instant=" + instant + ", coordinates=" + coordinates + ", speed=" + speed
-				+ "]";
+		return "IssPosition [instant=" + instant + ", coordinates=" + coordinates + ", speed="
+				+ speed + "]";
 	}
 
 	public static Builder builder() {
