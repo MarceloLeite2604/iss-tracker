@@ -1,6 +1,6 @@
 package com.github.marceloleite2604.isstracker.commons.dao.repository;
 
-import com.github.marceloleite2604.isstracker.commons.model.db.IssPosition;
+import com.github.marceloleite2604.isstracker.commons.model.IssPosition;
 import java.time.LocalDateTime;
 import java.util.List;
 import javax.transaction.Transactional;

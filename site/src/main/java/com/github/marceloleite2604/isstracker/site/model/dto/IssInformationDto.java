@@ -1,16 +1,16 @@
 package com.github.marceloleite2604.isstracker.site.model.dto;
 
-import com.github.marceloleite2604.isstracker.commons.model.db.IssPosition;
+import com.github.marceloleite2604.isstracker.commons.model.IssPosition;
 import java.util.Collections;
 import java.util.List;
 
-public class IssInformationDTO {
+public class IssInformationDto {
 
 	private List<IssPosition> issPositions;
 	
 	private Double averageSpeed;
 
-	private IssInformationDTO(Builder builder) {
+	private IssInformationDto(Builder builder) {
 		this.issPositions = builder.issPositions;
 		this.averageSpeed = builder.averageSpeed;
 	}
@@ -50,8 +50,8 @@ public class IssInformationDTO {
 			return this;
 		}
 
-		public IssInformationDTO build() {
-			return new IssInformationDTO(this);
+		public IssInformationDto build() {
+			return new IssInformationDto(this);
 		}
 	}
 }

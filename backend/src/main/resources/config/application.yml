@@ -1,0 +1,24 @@
+server:
+  port: ${PORT:8080}
+  servlet:
+    context-path: "/api/v1"
+
+springdoc:
+  api-docs:
+    path: "/docs"
+  swagger-ui:
+    path: "swagger-ui"
+
+spring:
+  profiles:
+    active:
+    - "@activeProfile@"
+  jpa:
+    show-sql: true
+site:
+  # locale: pt-br
+  # zone-id: America/Sao_Paulo
+  encryption:
+    cryptographic-algorythm: DESede
+    feedback-mode: CBC
+    padding-scheme: PKCS5Padding

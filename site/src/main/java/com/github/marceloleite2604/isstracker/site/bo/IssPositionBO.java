@@ -1,7 +1,7 @@
 package com.github.marceloleite2604.isstracker.site.bo;
 
 import com.github.marceloleite2604.isstracker.commons.dao.IssPositionDAO;
-import com.github.marceloleite2604.isstracker.commons.model.db.IssPosition;
+import com.github.marceloleite2604.isstracker.commons.model.IssPosition;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;

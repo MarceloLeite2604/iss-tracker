@@ -1,7 +1,7 @@
 package com.github.marceloleite2604.isstracker.commons.dao;
 
 import com.github.marceloleite2604.isstracker.commons.dao.repository.RouteMapRepository;
-import com.github.marceloleite2604.isstracker.commons.model.db.RouteMap;
+import com.github.marceloleite2604.isstracker.commons.model.RouteMap;
 import java.util.Optional;
 import javax.inject.Inject;
 import org.springframework.stereotype.Component;

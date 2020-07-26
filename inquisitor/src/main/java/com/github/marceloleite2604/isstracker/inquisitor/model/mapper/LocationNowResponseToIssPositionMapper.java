@@ -1,7 +1,7 @@
 package com.github.marceloleite2604.isstracker.inquisitor.model.mapper;
 
 import com.figtreelake.util.time.zoned.ZonedDateTimeUtil;
-import com.github.marceloleite2604.isstracker.commons.model.db.IssPosition;
+import com.github.marceloleite2604.isstracker.commons.model.IssPosition;
 import com.github.marceloleite2604.isstracker.inquisitor.model.opennotify.iss.locationnow.LocationNowResponse;
 import com.github.marceloleite2604.isstracker.inquisitor.util.UnitsUtil;
 import java.time.Duration;

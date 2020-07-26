@@ -1,7 +1,7 @@
 package com.github.marceloleite2604.isstracker.site.service;
 
 import com.figtreelake.blimp.Blimp;
-import com.github.marceloleite2604.isstracker.commons.model.db.RouteMap;
+import com.github.marceloleite2604.isstracker.commons.model.RouteMap;
 import com.github.marceloleite2604.isstracker.site.bo.MapBO;
 import com.github.marceloleite2604.isstracker.site.util.message.ErrorMessage;
 import java.io.ByteArrayInputStream;

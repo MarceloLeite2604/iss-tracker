@@ -1,7 +1,7 @@
 package com.github.marceloleite2604.isstracker.site.model.mapper;
 
-import com.github.marceloleite2604.isstracker.commons.model.db.IssPosition;
-import com.github.marceloleite2604.isstracker.site.model.dto.IssInformationDTO;
+import com.github.marceloleite2604.isstracker.commons.model.IssPosition;
+import com.github.marceloleite2604.isstracker.site.model.dto.IssInformationDto;
 import java.util.List;
 import java.util.Objects;
 import java.util.OptionalDouble;
@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class ListIssPositionToIssInformationDtoMapper {
 
-	public IssInformationDTO map(List<IssPosition> issPositions) {
+	public IssInformationDto map(List<IssPosition> issPositions) {
 		Double averageSpeed = calculateAverageSpeed(issPositions);
 
-		return IssInformationDTO.builder()
+		return IssInformationDto.builder()
 				// TODO Do not reuse persistent object. Copy it!
 				.issPositions(issPositions)
 				.averageSpeed(averageSpeed)

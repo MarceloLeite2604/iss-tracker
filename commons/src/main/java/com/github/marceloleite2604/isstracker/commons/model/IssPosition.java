@@ -1,6 +1,7 @@
-package com.github.marceloleite2604.isstracker.commons.model.db;
+package com.github.marceloleite2604.isstracker.commons.model;
 
-import com.github.marceloleite2604.isstracker.commons.model.Coordinates;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -10,6 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "iss_positions")
+@Schema(name = "iss-position", description = "The coordinates of the space station at a given instant.")
 public class IssPosition {
 
 	@Id
@@ -19,7 +21,14 @@ public class IssPosition {
 	private Coordinates coordinates;
 
 	@Column(nullable = true)
+	@JsonIgnore
 	private Double speed;
+
+	public IssPosition(IssPosition other) {
+		this.instant = other.instant;
+		this.coordinates = new Coordinates(other.coordinates);
+		this.speed = other.speed;
+	}
 
 	public IssPosition() {
 		super();

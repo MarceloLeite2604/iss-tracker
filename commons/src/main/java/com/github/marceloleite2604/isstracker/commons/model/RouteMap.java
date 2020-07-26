@@ -1,4 +1,4 @@
-package com.github.marceloleite2604.isstracker.commons.model.db;
+package com.github.marceloleite2604.isstracker.commons.model;
 
 import java.time.LocalDateTime;
 import javax.persistence.Column;

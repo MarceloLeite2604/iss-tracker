@@ -3,7 +3,7 @@ package com.github.marceloleite2604.isstracker.inquisitor.bo;
 import com.figtreelake.blimp.Blimp;
 import com.github.marceloleite2604.isstracker.commons.dao.IssPositionDAO;
 import com.github.marceloleite2604.isstracker.commons.model.comparator.IssPositionByInstantDescComparator;
-import com.github.marceloleite2604.isstracker.commons.model.db.IssPosition;
+import com.github.marceloleite2604.isstracker.commons.model.IssPosition;
 import com.github.marceloleite2604.isstracker.inquisitor.util.message.OutputMessage;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
