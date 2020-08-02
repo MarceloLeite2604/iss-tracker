@@ -15,7 +15,7 @@ inquisitor:
     style:
       route-color: "0xff000050"
       marker-color: "0xff0000a0"
-      image-size: 640x480
+      image-size: 640x460 
   encryption:
     cryptographic-algorythm: DESede
     feedback-mode: CBC
