@@ -17,9 +17,11 @@
     "typescript": "^3.9.7"
   },
   "scripts": {
-    "start": "REACT_APP_STAGE=development react-scripts start",
-    "build": "react-scripts build",
+    "start": "cross-env REACT_APP_STAGE=development react-scripts start",
+    "build": "cross-env REACT_APP_STAGE=development react-scripts build",
+    "build:prod": "cross-env REACT_APP_STAGE=production react-scripts build",
     "test": "react-scripts test",
+    "test:ci": "cross-env CI=true react-scripts test --passWithNoTests",
     "eject": "react-scripts eject",
     "lint": "eslint '*/**/*.{js,ts,tsx}'"
   },
@@ -28,8 +30,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm run test",
-      "pre-push": "npm run lint && npm run test"
+      "pre-commit": "npm run lint && npm run test:ci",
+      "pre-push": "npm run lint && npm run test:ci"
     }
   },
   "browserslist": {
@@ -47,6 +49,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^3.8.0",
     "@typescript-eslint/parser": "^3.8.0",
+    "cross-env": "^7.0.2",
     "eslint": "^6.6.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.22.0",
