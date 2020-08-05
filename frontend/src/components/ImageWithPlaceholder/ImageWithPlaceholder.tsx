@@ -1,7 +1,8 @@
-import React, { Component, CSSProperties } from "react";
-import { Observable } from "rxjs";
-import { Spinner, Image } from "react-bootstrap";
-import { Dimensions } from '../../Model';
+import React, { Component } from 'react';
+import { Observable } from 'rxjs';
+import { Spinner, Image } from 'react-bootstrap';
+import { Dimensions } from '../../model';
+import './ImageWithPlaceholder.css';
 
 interface ImageWithPlaceholderProps {
     src$: Observable<string>
@@ -13,19 +14,6 @@ interface ImageWithPlaceholderState {
 }
 
 export default class ImageWithPlaceholder extends Component<ImageWithPlaceholderProps, ImageWithPlaceholderState> {
-
-    private readonly divStyle = {
-        display: 'inline-block',
-        position: 'relative'
-    } as CSSProperties;
-
-    private readonly spinnerSyle = {
-        position: 'absolute',
-        zIndex: 1,
-        top: 'calc(50% - 1rem)',
-        left: 'calc(50% - 1rem)'
-    } as CSSProperties;
-
     private readonly initialState = {
         src: ''
     } as ImageWithPlaceholderState;
@@ -40,34 +28,34 @@ export default class ImageWithPlaceholder extends Component<ImageWithPlaceholder
         this.state = this.initialState;
     }
 
-    componentDidMount() {
-        this.props.src$.subscribe(src => this.setState({src}));
+    componentDidMount() : void {
+        this.props.src$.subscribe(src => this.setState({ src }));
     }
 
-    renderPlaceholder() {
+    renderPlaceholder() : JSX.Element {
         return (
-            <div style={this.divStyle}>
-                <Spinner 
-                    style={this.spinnerSyle}
-                    animation="border" 
+            <div className='ist-iwp-div'>
+                <Spinner
+                    className='ist-iwp-spinner'
+                    animation="border"
                     role="status" />
-                <Image 
-                    src={this.createPlaceholderImage(this.props.dimensions)} 
+                <Image
+                    src={this.createPlaceholderImage(this.props.dimensions)}
                     fluid />
             </div>
         );
     }
 
-    renderImage() {
+    renderImage() : JSX.Element {
         return (
             <Image
-                src={this.state.src} 
+                src={this.state.src}
                 fluid />
         );
     }
 
-    createPlaceholderImage(dimensions: Dimensions) {
-        return 'data:image/svg+xml;charset=UTF-8,'+ encodeURIComponent(`
+    createPlaceholderImage(dimensions: Dimensions) : string {
+        return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
         <svg 
             width="${dimensions.width}" 
             height="${dimensions.height}" 
@@ -83,8 +71,8 @@ export default class ImageWithPlaceholder extends Component<ImageWithPlaceholder
         </svg>
         `);
     }
-    
-    render() {
+
+    render() : JSX.Element {
         if (this.state.src) {
             return this.renderImage();
         }

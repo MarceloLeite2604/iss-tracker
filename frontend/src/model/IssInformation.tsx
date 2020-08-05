@@ -1,7 +1,7 @@
 
 interface Coordinates {
-    latitude: Number,
-    longitude: Number
+    latitude: number,
+    longitude: number
 }
 
 interface IssPosition {
@@ -10,6 +10,6 @@ interface IssPosition {
 }
 
 export interface IssInformation {
-    averageSpeed: Number,
+    averageSpeed: number,
     positions: IssPosition[]
 }

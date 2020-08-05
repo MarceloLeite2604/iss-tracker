@@ -1,0 +1,60 @@
+{
+    "env": {
+        "browser": true,
+        "es2020": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "standard"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 11,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "rules": {
+        "semi": [2, "always"],
+        "space-before-function-paren": ["error", "never"],
+        "indent": ["error", 4],
+        "max-len": ["error", { "code": 120 }]
+    },
+    "overrides": [
+        {
+            "files": ["**/*.ts", "**/*.tsx"],
+            "extends": [
+                "plugin:react/recommended",
+                "standard",
+                "plugin:@typescript-eslint/eslint-recommended",
+                "plugin:@typescript-eslint/recommended"
+            ],
+            "parser": "@typescript-eslint/parser",
+            "parserOptions": {
+                "ecmaFeatures": {
+                    "jsx": true
+                },
+                "ecmaVersion": 11,
+                "sourceType": "module"
+            },
+            "plugins": [
+                "react",
+                "@typescript-eslint"
+            ],
+            "rules": {
+                "semi": [2, "always"],
+                "space-before-function-paren": ["error", "never"],
+                "indent": ["error", 4],
+                "max-len": ["error", { "code": 120 }]
+            }        
+        }
+    ]
+}

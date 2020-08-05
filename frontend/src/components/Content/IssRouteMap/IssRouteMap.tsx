@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import { Observable, Subject } from 'rxjs';
 
-import IssInformationService from "../../../Services/IssInformationService";
+import IssInformationService from '../../../services/IssInformationService';
 import ImageWithPlaceholder from '../../ImageWithPlaceholder/ImageWithPlaceholder';
-import { Dimensions } from '../../../Model';
+import { Dimensions } from '../../../model';
 import { Card } from 'react-bootstrap';
 
 const imageDimensions = {
     width: 640,
-    height: 460,
+    height: 460
 } as Dimensions;
 
 export default class RouteMapImage extends Component {
-
     private readonly issInformationService = new IssInformationService();
 
     private readonly ISS_INFORMATION_UNAVAILABLE_IMAGE_PATH = 'iss-info-unavailable.png';
@@ -21,21 +20,19 @@ export default class RouteMapImage extends Component {
 
     private _redirectRouteMapUrl$ : Subject<string>;
 
-    constructor(props: any) {
-        super(props);
+    constructor() {
+        super({});
 
         this._routeMapUrl$ = this.issInformationService.routeMapUrl;
         this._redirectRouteMapUrl$ = new Subject<string>();
     }
 
-    componentDidMount() {
-        this._routeMapUrl$.subscribe( routeMapUrl => {
-            this.handleRouteMapUrlUpdate(routeMapUrl)
-        });
+    componentDidMount() : void {
+        this._routeMapUrl$.subscribe(routeMapUrl => this.handleRouteMapUrlUpdate(routeMapUrl));
         this.issInformationService.getRouteMapUrl();
     }
 
-    handleRouteMapUrlUpdate(receivedRouteMapUrl : string) {
+    handleRouteMapUrlUpdate(receivedRouteMapUrl : string) : void {
         let routeMapUrl = this.ISS_INFORMATION_UNAVAILABLE_IMAGE_PATH;
         if (receivedRouteMapUrl !== undefined) {
             routeMapUrl = receivedRouteMapUrl;
@@ -44,10 +41,12 @@ export default class RouteMapImage extends Component {
         this._redirectRouteMapUrl$.next(routeMapUrl);
     }
 
-    render() {
+    render() : JSX.Element {
         return (
             <Card>
-                <ImageWithPlaceholder src$={this._redirectRouteMapUrl$.asObservable()} dimensions={imageDimensions}/>
+                <ImageWithPlaceholder
+                    src$={this._redirectRouteMapUrl$.asObservable()}
+                    dimensions={imageDimensions}/>
             </Card>
         );
     }

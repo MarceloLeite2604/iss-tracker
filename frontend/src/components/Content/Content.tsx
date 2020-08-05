@@ -1,25 +1,21 @@
-import React, { Component, CSSProperties } from "react";
+import React, { Component } from 'react';
 
-import { Container, Col, Row } from "react-bootstrap";
+import { Container, Col, Row } from 'react-bootstrap';
 
-import IssRouteMap from "./IssRouteMap/IssRouteMap";
-import IssSpeed from "./IssSpeed/IssSpeed";
+import IssRouteMap from './IssRouteMap/IssRouteMap';
+import IssSpeed from './IssSpeed/IssSpeed';
+import './Content.css';
 
 class Content extends Component {
-
-    private readonly rowStyle = {
-        marginTop: '1rem' 
-    } as CSSProperties;
-
-    render() {
+    render() : JSX.Element {
         return (
             <Container>
-                <Row style={this.rowStyle}>
+                <Row className='ist-row'>
                     <Col className='d-flex justify-content-center'>
                         <IssRouteMap />
                     </Col>
                 </Row>
-                <Row style={this.rowStyle}>
+                <Row className='ist-row'>
                     <Col className='d-flex justify-content-center'>
                         <IssSpeed />
                     </Col>
@@ -29,4 +25,4 @@ class Content extends Component {
     }
 }
 
-export default Content
+export default Content;

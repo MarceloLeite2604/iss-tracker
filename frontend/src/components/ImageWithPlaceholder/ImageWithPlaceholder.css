@@ -1,0 +1,11 @@
+.ist-iwp-div {
+    display: inline-block;
+    position: relative
+}
+
+.ist-iwp-spinner {
+    position: absolute;
+    z-index: 1;
+    top: calc(50% - 1em);
+    left: calc(50% - 1em);
+}
