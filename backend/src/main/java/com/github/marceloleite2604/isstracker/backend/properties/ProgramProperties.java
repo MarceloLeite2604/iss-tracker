@@ -17,6 +17,11 @@ public class ProgramProperties {
 	 */
 	private String zoneId;
 
+	/**
+	 * CORS origin
+	 */
+	private String corsOrigin;
+
 	public String getLocale() {
 		return locale;
 	}
@@ -31,5 +36,13 @@ public class ProgramProperties {
 
 	public void setZoneId(String zoneId) {
 		this.zoneId = zoneId;
+	}
+
+	public String getCorsOrigin() {
+		return corsOrigin;
+	}
+
+	public void setCorsOrigin(String corsOrigin) {
+		this.corsOrigin = corsOrigin;
 	}
 }

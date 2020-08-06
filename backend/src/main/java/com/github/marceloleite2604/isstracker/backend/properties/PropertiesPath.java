@@ -2,7 +2,7 @@ package com.github.marceloleite2604.isstracker.backend.properties;
 
 public final class PropertiesPath {
 	
-	private static final String BASE = "site";
+	private static final String BASE = "backend";
 	
 	static final String PROGRAM = BASE;
 	

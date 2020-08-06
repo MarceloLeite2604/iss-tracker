@@ -15,7 +15,7 @@ spring:
     - "@activeProfile@"
   jpa:
     show-sql: true
-site:
+backend:
   # locale: pt-br
   # zone-id: America/Sao_Paulo
   encryption:

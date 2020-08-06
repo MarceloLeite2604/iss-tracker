@@ -91,11 +91,13 @@ public class ProgramConfiguration {
 	}
 
 	@Bean(BeanNames.WEB_MVC_CONFIGURER)
-	public WebMvcConfigurer createWebMvcConfigurer() {
+	public WebMvcConfigurer createWebMvcConfigurer(ProgramProperties programProperties) {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("http://localhost:3000");
+				if (StringUtils.isNotBlank(programProperties.getCorsOrigin())) {
+					registry.addMapping("/**").allowedOrigins(programProperties.getCorsOrigin());
+				}
 			}
 		};
 	}
