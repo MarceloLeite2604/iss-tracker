@@ -3,7 +3,7 @@ const dev = {
 };
 
 const prod = {
-    'backend-base-server': 'http://marceloleite2604-iss-tracker.herokuapp.com'
+    'backend-base-server': 'https://marceloleite2604-iss-tracker.herokuapp.com'
 };
 
 const config = process.env.REACT_APP_STAGE === 'production' ? prod : dev;
