@@ -96,6 +96,7 @@ public class ProgramConfiguration {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				if (StringUtils.isNotBlank(programProperties.getCorsOrigin())) {
+					LOGGER.info("Enabling CORS requests for \"{}\" domain", programProperties.getCorsOrigin());
 					registry.addMapping("/**").allowedOrigins(programProperties.getCorsOrigin());
 				}
 			}

@@ -10,4 +10,4 @@ backend:
     connections: 4
   encryption:
     key-environment-variable-name: SLED_ENCRYPTION_KEY
-  cors-origin: http://marceloleite2604.github.com
+  cors-origin: https://marceloleite2604.github.com
