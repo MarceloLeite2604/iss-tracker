@@ -12,4 +12,6 @@ backend:
     key-environment-variable-name: SLED_ENCRYPTION_KEY
   cors-origins:
     - https://marceloleite2604.github.io
+    - http://marceloleite2604.github.io
     - https://isstracker.figtreelake.com
+    - http://isstracker.figtreelake.com
