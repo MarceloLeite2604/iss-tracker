@@ -1,6 +1,7 @@
 package com.github.marceloleite2604.isstracker.backend.configuration;
 
 import com.github.marceloleite2604.isstracker.backend.properties.ProgramProperties;
+import java.util.stream.Collectors;
 import javax.inject.Named;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -24,16 +25,12 @@ public class IssTrackerWebMvcConfigurer implements WebMvcConfigurer {
   @Override
   public void addCorsMappings(CorsRegistry corsRegistry) {
     if (!CollectionUtils.isEmpty(programProperties.getCorsOrigins())) {
-      programProperties.getCorsOrigins().forEach(corsOrigin ->
-        this.addCorsOrigin(corsRegistry, corsOrigin)
-      );
-    }
-  }
-
-  private void addCorsOrigin(CorsRegistry corsRegistry, String corsOrigin) {
-    if (StringUtils.isNotBlank(corsOrigin)) {
-      LOGGER.info("Enabling CORS requests for \"{}\" domain", corsOrigin);
-      corsRegistry.addMapping("/**").allowedOrigins(corsOrigin);
+      String corsOrigins = String.join(", ", programProperties.getCorsOrigins());
+      LOGGER.info("Enabling CORS requests for the following domains: {}", corsOrigins);
+      corsRegistry
+          .addMapping("/**")
+          .allowedOrigins(programProperties.getCorsOrigins()
+              .toArray(String[]::new));
     }
   }
 }
