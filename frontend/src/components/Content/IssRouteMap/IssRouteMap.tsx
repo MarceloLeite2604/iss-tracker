@@ -8,7 +8,7 @@ import { Card } from 'react-bootstrap';
 
 const imageDimensions = {
     width: 640,
-    height: 460
+    height: 421
 } as Dimensions;
 
 export default class RouteMapImage extends Component {
