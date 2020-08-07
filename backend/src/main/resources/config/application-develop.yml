@@ -10,4 +10,5 @@ backend:
     connections: 4
   encryption:
     key: T5Sk8TKJf5G6HPvxUraKFfgcyMF2tRzf
-  cors-origin: http://localhost:3000
+  cors-origins:
+    - http://localhost:3000

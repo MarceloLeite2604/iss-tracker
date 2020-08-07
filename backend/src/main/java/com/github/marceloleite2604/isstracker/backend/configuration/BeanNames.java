@@ -16,7 +16,7 @@ public final class BeanNames {
 
 	public static final String LOCALE_RESOLVER = "localeResolver";
 
-  public static final String WEB_MVC_CONFIGURER = "webMvcConfigurer";
+  public static final String ISS_TRACKER_WEB_MVC_CONFIGURER = "issTrackerWebMvcConfigurer";
 
   private BeanNames() {
 		// Private constructor to avoid object instantiation.

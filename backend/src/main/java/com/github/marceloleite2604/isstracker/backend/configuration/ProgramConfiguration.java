@@ -17,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -88,19 +89,6 @@ public class ProgramConfiguration {
 		SessionLocaleResolver sessionLocaleResolver = new SessionLocaleResolver();
 		sessionLocaleResolver.setDefaultLocale(locale);
 		return sessionLocaleResolver;
-	}
-
-	@Bean(BeanNames.WEB_MVC_CONFIGURER)
-	public WebMvcConfigurer createWebMvcConfigurer(ProgramProperties programProperties) {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				if (StringUtils.isNotBlank(programProperties.getCorsOrigin())) {
-					LOGGER.info("Enabling CORS requests for \"{}\" domain", programProperties.getCorsOrigin());
-					registry.addMapping("/**").allowedOrigins(programProperties.getCorsOrigin());
-				}
-			}
-		};
 	}
 
 }

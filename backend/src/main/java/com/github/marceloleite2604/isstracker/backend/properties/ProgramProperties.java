@@ -1,5 +1,6 @@
 package com.github.marceloleite2604.isstracker.backend.properties;
 
+import java.util.List;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.validation.annotation.Validated;
 
@@ -18,9 +19,9 @@ public class ProgramProperties {
 	private String zoneId;
 
 	/**
-	 * CORS origin
+	 * CORS origins
 	 */
-	private String corsOrigin;
+	private List<String> corsOrigins;
 
 	public String getLocale() {
 		return locale;
@@ -38,11 +39,11 @@ public class ProgramProperties {
 		this.zoneId = zoneId;
 	}
 
-	public String getCorsOrigin() {
-		return corsOrigin;
+	public List<String> getCorsOrigins() {
+		return corsOrigins;
 	}
 
-	public void setCorsOrigin(String corsOrigin) {
-		this.corsOrigin = corsOrigin;
+	public void setCorsOrigins(List<String> corsOrigins) {
+		this.corsOrigins = corsOrigins;
 	}
 }
