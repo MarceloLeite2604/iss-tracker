@@ -12,3 +12,7 @@ backend:
     key: T5Sk8TKJf5G6HPvxUraKFfgcyMF2tRzf
   cors-origins:
     - http://localhost:3000
+  git:
+    commit-id-abbrev: "develop"
+    commit-id: "development"
+    commit-time: "(no time)"

@@ -15,3 +15,7 @@ backend:
     - http://marceloleite2604.github.io
     - https://isstracker.figtreelake.com
     - http://isstracker.figtreelake.com
+  git:
+    commit-id-abbrev: "@git.commit.id.abbrev@"
+    commit-id: "@git.commit.id@"
+    commit-time: "@git.commit.time@"

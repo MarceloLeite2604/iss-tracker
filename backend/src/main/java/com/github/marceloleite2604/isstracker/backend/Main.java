@@ -2,6 +2,7 @@ package com.github.marceloleite2604.isstracker.backend;
 
 import com.github.marceloleite2604.isstracker.backend.properties.DatabaseProperties;
 import com.github.marceloleite2604.isstracker.backend.properties.EncryptionProperties;
+import com.github.marceloleite2604.isstracker.backend.properties.GitProperties;
 import com.github.marceloleite2604.isstracker.backend.properties.ProgramProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,7 +13,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableConfigurationProperties({ ProgramProperties.class, DatabaseProperties.class,
-		EncryptionProperties.class })
+		EncryptionProperties.class, GitProperties.class})
 @EntityScan(basePackages = Main.BASE_PACKAGE)
 @ComponentScan(basePackages = Main.BASE_PACKAGE)
 @EnableJpaRepositories(basePackages = Main.BASE_PACKAGE)

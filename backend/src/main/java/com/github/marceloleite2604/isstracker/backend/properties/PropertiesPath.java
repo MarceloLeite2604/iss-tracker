@@ -10,6 +10,8 @@ public final class PropertiesPath {
 	
 	static final String ENCRYPTION = BASE + ".encryption";
 
+	static final String GIT = BASE + ".git";
+
 	private PropertiesPath() {
 		// Private constructor to avoid object instantiation.
 	}
