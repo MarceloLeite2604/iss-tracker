@@ -11,7 +11,7 @@
 
 	<groupId>com.github.marceloleite2604.iss-tracker</groupId>
 	<artifactId>iss-tracker</artifactId>
-	<version>1.1</version>
+	<version>1.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>iss-tracker</name>
@@ -51,7 +51,7 @@
 	<scm>
 		<connection>scm:git:git@github.com:MarceloLeite2604/iss-tracker.git</connection>
 		<developerConnection>scm:git:git@github.com:MarceloLeite2604/iss-tracker.git</developerConnection>
-	  <tag>iss-tracker-1.1</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 	<build>
