@@ -10,7 +10,6 @@
 	</parent>
 
 	<artifactId>inquisitor</artifactId>
-	<version>1.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>inquisitor</name>
@@ -20,7 +19,7 @@
 		<dependency>
 			<groupId>com.github.marceloleite2604.iss-tracker</groupId>
 			<artifactId>commons</artifactId>
-			<version>1.1-SNAPSHOT</version>
+			<version>[1,2)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
