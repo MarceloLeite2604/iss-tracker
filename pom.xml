@@ -50,6 +50,11 @@
 		</profile>
 	</profiles>
 
+	<scm>
+		<connection>scm:git:git@github.com:MarceloLeite2604/iss-tracker.git</connection>
+		<developerConnection>scm:git:git@github.com:MarceloLeite2604/iss-tracker.git</developerConnection>
+	</scm>
+
 	<build>
 		<plugins>
 			<plugin>
