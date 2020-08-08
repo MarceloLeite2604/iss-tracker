@@ -38,6 +38,3 @@ hs_err_pid*
 
 # vi swap files
 **/*.swp
-
-# Maven wrapper files
-**/.mvn
