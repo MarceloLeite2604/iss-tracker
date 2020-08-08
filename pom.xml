@@ -74,6 +74,7 @@
 					<configuration>
 						<goals>install</goals>
 						<autoVersionSubmodules>true</autoVersionSubmodules>
+						<remoteTagging>false</remoteTagging>
 					</configuration>
 				</plugin>
 			</plugins>
