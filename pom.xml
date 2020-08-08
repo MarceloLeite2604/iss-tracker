@@ -28,7 +28,6 @@
 	<modules>
 		<module>commons</module>
 		<module>inquisitor</module>
-		<module>site</module>
 		<module>backend</module>
 	</modules>
 
