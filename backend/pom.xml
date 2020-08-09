@@ -100,7 +100,8 @@
           </delimiters>
         </configuration>
       </plugin>
-      <plugin>
+      <!-- The project uses "git-commit-id-plugin" Maven plugin to retrieve Git information from ".git" repository, but, unfortunatelly, Heroku does not keep this directory in its Dyno during project building, causing its usage to fail. Hence, it is not possible to use this endpoint through it (but perhaps somewhere in the future). -->
+      <!-- <plugin>
         <groupId>pl.project13.maven</groupId>
         <artifactId>git-commit-id-plugin</artifactId>
         <version>4.0.2</version>
@@ -117,14 +118,14 @@
           <prefix>git</prefix>
           <verbose>false</verbose>
           <generateGitPropertiesFile>true</generateGitPropertiesFile>
-          <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
+          <generateGitPropertiesFilename>${project.basedir}/git.properties</generateGitPropertiesFilename>
           <gitDescribe>
             <skip>false</skip>
             <always>false</always>
             <dirty>-dirty</dirty>
           </gitDescribe>
         </configuration>
-      </plugin>
+      </plugin> -->
     </plugins>
   </build>
 
