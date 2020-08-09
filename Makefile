@@ -1,5 +1,5 @@
 build-frontend:
-	npm run install --prefix ./frontend
+	npm install --prefix ./frontend
 	npm run build:prod --prefix ./frontend
 
 
