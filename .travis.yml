@@ -2,7 +2,9 @@ matrix:
   include:
   - language: java
     branches:
-      only: develop
+      only: 
+        - develop
+        - master
     deploy:
       provider: heroku
       api_key:
@@ -10,7 +12,9 @@ matrix:
   - language: node_js
     node_js: 12
     branches:
-      only: develop
+      only: 
+        - develop
+        - master
     script: make build-frontend
     deploy:
       provider: pages
