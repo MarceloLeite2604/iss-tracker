@@ -1,14 +1,22 @@
 matrix:
   include:
-    - language: java
-      branches:
-        only: develop
-      deploy:
-        provider: heroku
-        api_key:
-          secure: G1dgYh1RAqS0HI5a21DSdk3A/PjqRlcGW8rYlygoRwjH1B3kn7mL0BYzXi5A1KtkNsv4lnBzhCyNP4pRierYFOC0ft/eZvB+o6miRLWhVuO29SOmtT5Ceuf5Nvpmu4DY3W7lSMNgA4gPSgrpSpEBLeBe1tCfWv2mcgrNfQZPTDg3TP0ZqEWp42yQcoPbGuUpHubBAgkVvuWMyab9Ra5dvDzJobLhdVfA5LdQ33bXSN2/dkNS8wLXVoQeNTvdEMD8nCUB/VRkMXphXDnt4uNQkEZjJUjeV2UXQpYP5KTbaWri/O6IzPrOStjOlIyCr4OLR/keL85VKdzMkOu4B+Bh4ENyWQIXeZJ3EiOkvK/5HF+wGK1CvtJLRTZxQsFRkoGD3kTXvaU0VI0KTHzDYgQ3xtdr10a/OBdfyGTuNsEBnW/L+jFX4xdGPRwY93AiH1FObe4j8QvaUm7jZuVB5uDqPpPoDGhwXHKrA/JIKGOGI03nRJ8YlhCcZjR6EYoip4bAjxkp3B1I3ic2Lnx6R0fYURBXhBvJYHzRLL118Eys5rOFw2Vq+eIFrvxtX+rBruok793q2EA2+P4Bn1aDNcsqJuhQNUooSRGDDL9thIxtSS3nLiNft3UNJwhyxYPrfF3B5RBssEmVSrX8LMwGrGdvnWdtgR6REDaqj9UsWIqcbok=
-    - language: node_js
-      node_js: 12
-      branches:
-        only: develop
-      script: make build-frontend
+  - language: java
+    branches:
+      only: develop
+    deploy:
+      provider: heroku
+      api_key:
+        secure: G1dgYh1RAqS0HI5a21DSdk3A/PjqRlcGW8rYlygoRwjH1B3kn7mL0BYzXi5A1KtkNsv4lnBzhCyNP4pRierYFOC0ft/eZvB+o6miRLWhVuO29SOmtT5Ceuf5Nvpmu4DY3W7lSMNgA4gPSgrpSpEBLeBe1tCfWv2mcgrNfQZPTDg3TP0ZqEWp42yQcoPbGuUpHubBAgkVvuWMyab9Ra5dvDzJobLhdVfA5LdQ33bXSN2/dkNS8wLXVoQeNTvdEMD8nCUB/VRkMXphXDnt4uNQkEZjJUjeV2UXQpYP5KTbaWri/O6IzPrOStjOlIyCr4OLR/keL85VKdzMkOu4B+Bh4ENyWQIXeZJ3EiOkvK/5HF+wGK1CvtJLRTZxQsFRkoGD3kTXvaU0VI0KTHzDYgQ3xtdr10a/OBdfyGTuNsEBnW/L+jFX4xdGPRwY93AiH1FObe4j8QvaUm7jZuVB5uDqPpPoDGhwXHKrA/JIKGOGI03nRJ8YlhCcZjR6EYoip4bAjxkp3B1I3ic2Lnx6R0fYURBXhBvJYHzRLL118Eys5rOFw2Vq+eIFrvxtX+rBruok793q2EA2+P4Bn1aDNcsqJuhQNUooSRGDDL9thIxtSS3nLiNft3UNJwhyxYPrfF3B5RBssEmVSrX8LMwGrGdvnWdtgR6REDaqj9UsWIqcbok=
+  - language: node_js
+    node_js: 12
+    branches:
+      only: develop
+    script: make build-frontend
+    deploy:
+      provider: pages
+      github_token:
+        secure: BBNsVPLriTPECooi8UJzXRsklwiBInsGvk50rqi6/80D/kFEPfiVTQbKQS6ioOQPsBLkF9XV8d9VSZTxC42ptWDLBbBLgbji0r1Fa25nCa1VRI54n+BGEluuROK3CAF+hftACuGfYdCP/szDZTv7EDzW8d0DSIWUfnqJ295KAeYqgylbVgwpjkUpOzUfxh9vnJM8dX+vMXcRhmQVq+LdkmH8xNGx9HWfpfOcmwh8SellCkfbwwDsMi51rgaWkvBXzmdX5YY0DUujHVPk/9DENh0yEdv9+0SvZtF57pc3dNES6nUgzJJuNW7Af/VzeQlMifo92LVTUju2lqBnBBVey5uZ9zZeEK/S8MTfroeI39Hojb+Kw6PyleoPfVDut5rKSHS/+rRbmbO0hRsm4ZvtSEOk7WaaoEEpp/G9PovWzt9Y5Rln6YqkIXwPfxLC2Uc7haAuiX6hPmjQS1+H0MljSGjKEjwyMHf9plF1WnNCwwE1VY7jz5AOzMZA36D/RvHwgiaCblv1ihibxcbijqLZpKhr+LhZ7Z7eA9wucmkVGDQ/NFf2BwnFyjrwxPpcGGz305Z9iK42xYsaoEEKg622hhMm2KG/jgZTQN6yBtlY7L6qqu3V9jncOb7WT1XmPqn/J1OVverLaH/gvFLR9qk/hJt7v6Tgh2rc+OE2oSMx8Ac=
+      keep_history: true
+      on:
+        branch: master
+  
