@@ -7,6 +7,7 @@ matrix:
       only: 
         - develop
         - master
+    install: ./mvnw -P heroku install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
     script: ./mvnw -P heroku test -B
     after_success:
       - ./heroku/after-success.sh
