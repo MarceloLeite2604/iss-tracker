@@ -10,10 +10,7 @@ matrix:
     after_success:
       - ./heroku/after-success.sh
     deploy:
-      provider: heroku
-      app: marceloleite2604-iss-tracker
-      api_key:
-        secure: G1dgYh1RAqS0HI5a21DSdk3A/PjqRlcGW8rYlygoRwjH1B3kn7mL0BYzXi5A1KtkNsv4lnBzhCyNP4pRierYFOC0ft/eZvB+o6miRLWhVuO29SOmtT5Ceuf5Nvpmu4DY3W7lSMNgA4gPSgrpSpEBLeBe1tCfWv2mcgrNfQZPTDg3TP0ZqEWp42yQcoPbGuUpHubBAgkVvuWMyab9Ra5dvDzJobLhdVfA5LdQ33bXSN2/dkNS8wLXVoQeNTvdEMD8nCUB/VRkMXphXDnt4uNQkEZjJUjeV2UXQpYP5KTbaWri/O6IzPrOStjOlIyCr4OLR/keL85VKdzMkOu4B+Bh4ENyWQIXeZJ3EiOkvK/5HF+wGK1CvtJLRTZxQsFRkoGD3kTXvaU0VI0KTHzDYgQ3xtdr10a/OBdfyGTuNsEBnW/L+jFX4xdGPRwY93AiH1FObe4j8QvaUm7jZuVB5uDqPpPoDGhwXHKrA/JIKGOGI03nRJ8YlhCcZjR6EYoip4bAjxkp3B1I3ic2Lnx6R0fYURBXhBvJYHzRLL118Eys5rOFw2Vq+eIFrvxtX+rBruok793q2EA2+P4Bn1aDNcsqJuhQNUooSRGDDL9thIxtSS3nLiNft3UNJwhyxYPrfF3B5RBssEmVSrX8LMwGrGdvnWdtgR6REDaqj9UsWIqcbok=
+      provider: script
       script: "heroku container:release worker web --app marceloleite2604-iss-tracker"
   - language: node_js
     node_js: 12
