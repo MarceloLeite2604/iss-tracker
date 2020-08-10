@@ -8,7 +8,7 @@ matrix:
         - develop
         - master
     after_success:
-      - ./heroku/after-success.sh
+      - . ./heroku/after-success.sh
     deploy:
       provider: script
       script: "heroku container:release worker web --app marceloleite2604-iss-tracker"
