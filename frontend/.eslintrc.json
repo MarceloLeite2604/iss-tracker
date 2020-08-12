@@ -25,7 +25,7 @@
     "rules": {
         "semi": [2, "always"],
         "space-before-function-paren": ["error", "never"],
-        "indent": ["error", 4],
+        "indent": ["error", 4, {"SwitchCase": 1}],
         "max-len": ["error", { "code": 120 }]
     },
     "overrides": [
@@ -52,7 +52,7 @@
             "rules": {
                 "semi": [2, "always"],
                 "space-before-function-paren": ["error", "never"],
-                "indent": ["error", 4],
+                "indent": ["error", 4, {"SwitchCase": 1}],
                 "max-len": ["error", { "code": 120 }]
             }        
         }
