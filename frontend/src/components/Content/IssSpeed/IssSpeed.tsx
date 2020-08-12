@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import IssInformationService from '../../../services/IssInformationService';
-import { IssInformation } from '../../../model';
+import { IssInformation, TransmissionState } from '../../../model';
 import { Observable } from 'rxjs';
 
-interface IssSpeedState {
+type IssSpeedState = {
+    state: TransmissionState
     issInformation: IssInformation
 }
 
 export default class IssSpeed extends Component {
     readonly initialState : IssSpeedState = {
-        issInformation: {
-            averageSpeed: 0,
-            positions: []
-
-        }
+        state: TransmissionState.WAITING
     } as IssSpeedState;
 
     readonly issInformationService : IssInformationService;
@@ -30,7 +27,11 @@ export default class IssSpeed extends Component {
     }
 
     componentDidMount() : void {
-        this._issInformation$.subscribe(issInformation => this.setState({ issInformation }));
+        this._issInformation$.subscribe(issInformation => this.setState(
+            {
+                state: TransmissionState.RECEIVED,
+                issInformation
+            }));
         this.issInformationService.getInformation();
     }
 
@@ -42,7 +43,7 @@ export default class IssSpeed extends Component {
         return (
             <p>
                 {`ISS is flying at an astonishing speed of 
-                ${this.formatAverageSpeed(this.state.issInformation.averageSpeed)} km/h.`}
+                ${this.formatAverageSpeed(this.state.issInformation?.averageSpeed ?? 0)} km/h.`}
             </p>
         );
     }
@@ -53,10 +54,21 @@ export default class IssSpeed extends Component {
         );
     }
 
+    renderPlaceholder() : JSX.Element {
+        return (
+            <p>We are calculating ISS average speed. Please wait...</p>
+        );
+    }
+
     render() : JSX.Element {
-        if (this.state.issInformation === undefined) {
-            return this.renderAverageSpeedNotAvailable();
+        if (this.state.state === TransmissionState.WAITING) {
+            return this.renderPlaceholder();
+        } else {
+            if (this.state.issInformation === undefined) {
+                return this.renderAverageSpeedNotAvailable();
+            } else {
+                return this.renderAverageSpeed();
+            }
         }
-        return this.renderAverageSpeed();
     }
 }

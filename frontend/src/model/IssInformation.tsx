@@ -1,15 +1,15 @@
 
-interface Coordinates {
+type Coordinates = {
     latitude: number,
     longitude: number
 }
 
-interface IssPosition {
+type IssPosition = {
     instant: Date,
     coordinates: Coordinates
 }
 
-export interface IssInformation {
+export type IssInformation = {
     averageSpeed: number,
     positions: IssPosition[]
 }
