@@ -27,8 +27,6 @@ public class GitController {
     this.gitPropertiesDto = gitPropertiesToGitPropertiesDtoMapper.map(gitProperties);
   }
 
-  /*
-  The project uses "git-commit-id-plugin" Maven plugin to retrieve Git information from ".git" reository, but, unfortunatelly, Heroku does not keep this directory in its Dyno during project building, causing its usage to fail. Hence, it is not possible to use this endpoint through it (but perhaps somewhere in the future).
   @Operation(summary = "Retrieve Git information about the project.")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "Information found.",
@@ -38,5 +36,4 @@ public class GitController {
   public GitPropertiesDto get() {
     return gitPropertiesDto;
   }
-  */
 }
