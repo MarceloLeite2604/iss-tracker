@@ -13,7 +13,7 @@
 
 	<groupId>com.github.marceloleite2604.iss-tracker</groupId>
 	<artifactId>iss-tracker</artifactId>
-	<version>1.1</version>
+	<version>2.0</version>
 	<packaging>pom</packaging>
 
 	<name>iss-tracker</name>
