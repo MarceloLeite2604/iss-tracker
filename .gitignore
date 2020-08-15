@@ -38,3 +38,6 @@ hs_err_pid*
 
 # vi swap files
 **/*.swp
+
+# git-commit-id-plugin Maven plugin output file
+**/git.properties
