@@ -1,0 +1,8 @@
+@import '../../../custom.scss';
+
+div.iss-route-map {
+    border: solid 0px theme-color-level('background', 2);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0.25rem 0.25rem 0.25rem 0 rgba(0,0,0,0.32)
+}

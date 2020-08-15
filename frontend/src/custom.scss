@@ -1,8 +1,9 @@
 $body-bg: #e8e9ed;
 $enable-gradients: true;
 $theme-colors: (
-   "primary": #30323d,
-   "info": #e8e9ed,
+   'primary': #30323d,
+   'background': $body-bg,
+   'info': #e8e9ed,
 );
 
 @import '~bootstrap/scss/bootstrap.scss';

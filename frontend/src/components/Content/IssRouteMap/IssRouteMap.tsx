@@ -4,7 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import IssInformationService from '../../../services/IssInformationService';
 import ImageWithPlaceholder from '../../ImageWithPlaceholder/ImageWithPlaceholder';
 import { Dimensions } from '../../../model';
-import { Card } from 'react-bootstrap';
+import './IssRouteMap.scss';
 
 const imageDimensions = {
     width: 640,
@@ -43,11 +43,11 @@ export default class RouteMapImage extends Component {
 
     render() : JSX.Element {
         return (
-            <Card>
+            <div className='iss-route-map'>
                 <ImageWithPlaceholder
                     src$={this._redirectRouteMapUrl$.asObservable()}
                     dimensions={imageDimensions}/>
-            </Card>
+            </div>
         );
     }
 }
