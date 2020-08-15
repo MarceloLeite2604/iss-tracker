@@ -1,0 +1,22 @@
+@import '../../custom.scss';
+
+footer.footer {
+    position: absolute;
+    bottom: 0px;
+    background: 
+        theme-color('primary') 
+        linear-gradient(
+            180deg, 
+            theme-color-level('primary', -2), 
+            theme-color('primary')
+        ) 
+        repeat-x;
+    width: 100%;
+    height: 2.4rem;
+}
+
+@include media-breakpoint-down(sm) {
+    footer.footer {
+      height: 2.2rem;
+    }
+  }

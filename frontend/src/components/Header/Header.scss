@@ -1,0 +1,21 @@
+@import '../../custom.scss';
+
+.ist-navbar {
+    margin-bottom: 1rem;
+    background: 
+        theme-color('primary') 
+        linear-gradient(
+            180deg, 
+            theme-color-level('primary', -2), 
+            theme-color('primary')
+        ) 
+        repeat-x;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.32),0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+span.ist-navbar-brand {
+    color: theme-color("info");
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px theme-color("primary");
+}

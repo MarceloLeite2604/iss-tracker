@@ -4,7 +4,7 @@ import { Container, Col, Row } from 'react-bootstrap';
 
 import IssRouteMap from './IssRouteMap/IssRouteMap';
 import IssSpeed from './IssSpeed/IssSpeed';
-import './Content.css';
+import './Content.scss';
 
 class Content extends Component {
     render() : JSX.Element {

@@ -14,10 +14,11 @@ export default class GitService extends AbstractService {
         return this._gitPropertiesSubject.asObservable();
     }
 
-    getGitProperties() : void {
+    getProperties() : void {
         fetch(`${this.BASE_API}/git`)
             .then(response => this.handleErrors(response))
             .then(response => response.json())
+            .then((content : GitProperties) => this._gitPropertiesSubject.next(content))
             .catch(error => {
                 console.log((error as Error).message);
                 this._gitPropertiesSubject.next(undefined);

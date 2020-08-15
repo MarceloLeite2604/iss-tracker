@@ -13,7 +13,7 @@ export default class IssSpeed extends Component {
         state: TransmissionState.WAITING
     } as IssSpeedState;
 
-    readonly issInformationService : IssInformationService;
+    private readonly issInformationService : IssInformationService;
 
     private readonly _issInformation$ : Observable<IssInformation>;
 
