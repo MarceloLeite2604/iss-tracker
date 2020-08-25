@@ -18,9 +18,9 @@ public class OldIssPositionsDeleter {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(OldIssPositionsDeleter.class);
 
-	private static final long EXECUTION_PERIOD_MILLIS = 3600000;
+	private static final long EXECUTION_PERIOD_MILLIS = 3_600_000;
 
-	private static final long INITIAL_DELAY_MILLIS = 2000;
+	private static final long INITIAL_DELAY_MILLIS = 2_000;
 
 	@Inject
 	private Blimp blimp;

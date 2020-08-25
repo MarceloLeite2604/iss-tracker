@@ -9,14 +9,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class MapBo {
 
-  private RouteMapDAO mapDAO;
+  private RouteMapDAO routeMapDAO;
 
   @Inject
-  public MapBo(RouteMapDAO mapDAO) {
-    this.mapDAO = mapDAO;
+  public MapBo(RouteMapDAO routeMapDAO) {
+    this.routeMapDAO = routeMapDAO;
   }
 
   public Optional<RouteMap> findMostRecent() {
-    return mapDAO.findTop1ByOrderByInstantDesc();
+    return routeMapDAO.findTop1ByOrderByInstantDesc();
   }
 }

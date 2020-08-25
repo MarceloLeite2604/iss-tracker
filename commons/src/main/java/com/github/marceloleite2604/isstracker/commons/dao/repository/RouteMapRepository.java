@@ -5,8 +5,12 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 
+import javax.transaction.Transactional;
+
 public interface RouteMapRepository extends CrudRepository<RouteMap, LocalDateTime>{
 
-	public Optional<RouteMap> findTop1ByOrderByInstantDesc();
+	Optional<RouteMap> findTop1ByOrderByInstantDesc();
 
+	@Transactional
+	Long deleteByInstantLessThan(LocalDateTime instant);
 }

@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IssPositionRepository extends CrudRepository<IssPosition, LocalDateTime>{
 
-	public List<IssPosition> findAllByInstantBetweenOrderByInstantDesc(LocalDateTime start, LocalDateTime end);
+	List<IssPosition> findAllByInstantBetweenOrderByInstantDesc(LocalDateTime start, LocalDateTime end);
 	
 	@Transactional
-	public Long deleteByInstantLessThan(LocalDateTime instant);
+	Long deleteByInstantLessThan(LocalDateTime instant);
 
 }

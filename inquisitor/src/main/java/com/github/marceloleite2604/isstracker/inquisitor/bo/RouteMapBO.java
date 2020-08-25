@@ -106,4 +106,8 @@ public class RouteMapBO {
 		return (!CollectionUtils.isEmpty(issPositions)
 				&& issPositions.size() > routeMapGenerationProperties.getMinimalPositions());
 	}
+
+    public long deleteByInstantLessThan(LocalDateTime instant) {
+		return routeMapDAO.deleteByInstantLessThan(instant);
+    }
 }
